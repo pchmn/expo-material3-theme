@@ -29,6 +29,7 @@
   "license": "MIT",
   "homepage": "https://github.com/pchmn/expo-material3-theme#readme",
   "devDependencies": {
+    "@types/color": "^3.0.3",
     "@types/jest": "^29.4.0",
     "@types/react": "^18.0.25",
     "@types/react-native": "^0.70.6",
@@ -39,5 +40,9 @@
     "expo": "*",
     "react": "*",
     "react-native": "*"
+  },
+  "dependencies": {
+    "@importantimport/material-color-utilities": "0.2.2-alpha.0",
+    "color": "^4.2.3"
   }
 }

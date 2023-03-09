@@ -1,9 +1,18 @@
+import { Material3SystemColors, Material3Theme } from './ExpoMaterial3Theme.types';
+import ExpoMaterial3ThemeModule from './ExpoMaterial3ThemeModule';
+import { createMaterial3Theme, generateMaterial3Scheme } from './utils/createMaterial3Theme';
 
-// Import the native module. On web, it will be resolved to ExpoMaterial3Theme.web.ts
-// and on native platforms to ExpoMaterial3Theme.ts
-import ExpoMaterial3ThemeModule from "./ExpoMaterial3ThemeModule";
+export function getMaterial3Theme(defaultSourceColor: string, overwriteSystem = false): Material3Theme {
+  const systemTheme = ExpoMaterial3ThemeModule.getSystemTheme() as {
+    light: Material3SystemColors;
+    dark: Material3SystemColors;
+  } | null;
 
-
-export function hello(): string {
-  return ExpoMaterial3ThemeModule.hello();
+  if (systemTheme && !overwriteSystem) {
+    return {
+      light: generateMaterial3Scheme(systemTheme.light, 'light'),
+      dark: generateMaterial3Scheme(systemTheme.dark, 'dark'),
+    };
+  }
+  return createMaterial3Theme(defaultSourceColor);
 }
