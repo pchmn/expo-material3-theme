@@ -1,7 +1,7 @@
 {
   "name": "expo-material3-theme",
   "version": "0.1.0",
-  "description": "My new module",
+  "description": "Expo module to generate Material 3 theme",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "scripts": {
@@ -28,8 +28,8 @@
   "author": "pchmn <pchmn.dev@gmail.com> (https://github.com/pchmn)",
   "license": "MIT",
   "homepage": "https://github.com/pchmn/expo-material3-theme#readme",
-  "dependencies": {},
   "devDependencies": {
+    "@types/jest": "^29.4.0",
     "@types/react": "^18.0.25",
     "@types/react-native": "^0.70.6",
     "expo-module-scripts": "^3.0.4",
