@@ -1,0 +1,9 @@
+{
+  "platforms": ["ios", "android", "web"],
+  "ios": {
+    "modules": ["ExpoMaterial3ThemeModule"]
+  },
+  "android": {
+    "modules": ["expo.modules.material3theme.ExpoMaterial3ThemeModule"]
+  }
+}
