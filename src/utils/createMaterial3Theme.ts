@@ -1,6 +1,6 @@
 import { argbFromHex, Scheme, themeFromSourceColor } from '@importantimport/material-color-utilities';
 import color from 'color';
-import { Material3Scheme, Material3SystemColors } from '../ExpoMaterial3Theme.types';
+import { Material3Scheme, Material3Theme, SystemScheme } from '../ExpoMaterial3Theme.types';
 
 const opacity = {
   level1: 0.08,
@@ -11,50 +11,54 @@ const opacity = {
 
 const elevations = ['transparent', 0.05, 0.08, 0.11, 0.12, 0.14];
 
-const constantColors = {
-  light: {
-    error: '#B3261E',
-    onError: '#FFFFFF',
-    errorContainer: '#F9DEDC',
-    onErrorContainer: '#410E0B',
-    shadow: '#000000',
-    scrim: '#000000',
-  },
-  dark: {
-    error: '#F2B8B5',
-    onError: '#601410',
-    errorContainer: '#8C1D18',
-    onErrorContainer: '#F9DEDC',
-    shadow: '#000000',
-    scrim: '#000000',
-  },
-};
-
-export function createMaterial3Theme(sourceColor: string) {
-  const { schemes } = themeFromSourceColor(argbFromHex(sourceColor));
+export function createThemeFromSystemSchemes(schemes: { light: SystemScheme; dark: SystemScheme }): Material3Theme {
+  const { light, dark, palettes } = generateSchemesFromSourceColor(schemes.light.primary);
+  schemes = {
+    light: { ...light, ...schemes.light },
+    dark: { ...dark, ...schemes.dark },
+  };
 
   return {
-    light: generateMaterial3Scheme(transformScheme(schemes.light), 'light'),
-    dark: generateMaterial3Scheme(transformScheme(schemes.dark), 'dark'),
+    light: { ...schemes.light, ...generateMissingFields(schemes.light, palettes) } as Material3Scheme,
+    dark: { ...schemes.dark, ...generateMissingFields(schemes.dark, palettes) } as Material3Scheme,
   };
 }
 
-export function generateMaterial3Scheme(colors: Material3SystemColors, colorScheme: 'dark' | 'light'): Material3Scheme {
+export function createThemeFromSourceColor(sourceColor: string): Material3Theme {
+  const { light, dark, palettes } = generateSchemesFromSourceColor(sourceColor);
+
+  return {
+    light: { ...light, ...generateMissingFields(light, palettes) } as Material3Scheme,
+    dark: { ...dark, ...generateMissingFields(dark, palettes) } as Material3Scheme,
+  };
+}
+
+function generateMissingFields(scheme: SystemScheme, palettes: any) {
   const elevation = elevations.reduce(
     (acc, value, index) => ({
       ...acc,
-      [`level${index}`]: index === 0 ? value : color(colors.surface).mix(color(colors.primary), Number(value)).hex(),
+      [`level${index}`]: index === 0 ? value : color(scheme.surface).mix(color(scheme.primary), Number(value)).hex(),
     }),
     {}
   ) as Material3Scheme['elevation'];
 
   const customColors = {
-    surfaceDisabled: color(colors.onSurface).alpha(opacity.level2).rgb().string(),
-    onSurfaceDisabled: color(colors.onSurface).alpha(opacity.level4).rgb().string(),
-    backdrop: colors.onSurface,
+    surfaceDisabled: color(scheme.onSurface).alpha(opacity.level2).rgb().string(),
+    onSurfaceDisabled: color(scheme.onSurface).alpha(opacity.level4).rgb().string(),
+    backdrop: color(palettes.neutralVariant.tone(20)).alpha(0.4).rgb().string(),
   };
 
-  return { ...colors, elevation, ...customColors, ...constantColors[colorScheme] };
+  return { elevation, ...customColors };
+}
+
+function generateSchemesFromSourceColor(sourceColor: string) {
+  const { schemes, palettes } = themeFromSourceColor(argbFromHex(sourceColor));
+
+  return {
+    light: transformScheme(schemes.light),
+    dark: transformScheme(schemes.dark),
+    palettes,
+  };
 }
 
 function transformScheme(scheme: Scheme) {
