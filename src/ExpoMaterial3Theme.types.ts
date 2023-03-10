@@ -7,7 +7,7 @@ enum ElevationLevels {
   'level5',
 }
 
-export type Material3SystemColors = {
+export type SystemScheme = {
   primary: string;
   onPrimary: string;
   primaryContainer: string;
@@ -39,7 +39,7 @@ export type Material3SystemColors = {
   inversePrimary: string;
 };
 
-export type Material3Colors = Material3SystemColors & {
+export type Material3Scheme = SystemScheme & {
   error: string;
   onError: string;
   errorContainer: string;
@@ -47,9 +47,6 @@ export type Material3Colors = Material3SystemColors & {
 
   shadow: string;
   scrim: string;
-};
-
-export type Material3Scheme = Material3Colors & {
   surfaceDisabled: string;
   onSurfaceDisabled: string;
   backdrop: string;

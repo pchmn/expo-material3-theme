@@ -1,18 +1,35 @@
-import { Material3SystemColors, Material3Theme } from './ExpoMaterial3Theme.types';
+import { Material3Theme, SystemScheme } from './ExpoMaterial3Theme.types';
 import ExpoMaterial3ThemeModule from './ExpoMaterial3ThemeModule';
-import { createMaterial3Theme, generateMaterial3Scheme } from './utils/createMaterial3Theme';
+import { createThemeFromSourceColor, createThemeFromSystemSchemes } from './utils/createMaterial3Theme';
 
-export function getMaterial3Theme(defaultSourceColor: string, overwriteSystem = false): Material3Theme {
-  const systemTheme = ExpoMaterial3ThemeModule.getSystemTheme() as {
-    light: Material3SystemColors;
-    dark: Material3SystemColors;
+/**
+ * Get the Material3 theme from the system (works only on Android 12+).
+ *
+ * If the system does not support Material3, it will return a theme based on the default source color.
+ *
+ * @param defaultSourceColor default source color for the theme
+ * @returns Material3 theme
+ */
+export function getMaterial3Theme(defaultSourceColor: string): Material3Theme {
+  const systemSchemes = ExpoMaterial3ThemeModule.getSystemTheme() as {
+    light: SystemScheme;
+    dark: SystemScheme;
   } | null;
 
-  if (systemTheme && !overwriteSystem) {
-    return {
-      light: generateMaterial3Scheme(systemTheme.light, 'light'),
-      dark: generateMaterial3Scheme(systemTheme.dark, 'dark'),
-    };
+  if (systemSchemes) {
+    return createThemeFromSystemSchemes(systemSchemes);
   }
-  return createMaterial3Theme(defaultSourceColor);
+  return createThemeFromSourceColor(defaultSourceColor);
 }
+
+/**
+ * Create a Material3 theme based on the source color.
+ *
+ * @param sourceColor source color for the theme
+ * @returns Material3 theme
+ */
+export function createMaterial3ThemeFromSourceColor(sourceColor: string): Material3Theme {
+  return createThemeFromSourceColor(sourceColor);
+}
+
+export { Material3Theme };
