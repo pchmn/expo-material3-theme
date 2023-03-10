@@ -10,7 +10,11 @@
   "dependencies": {
     "expo": "~48.0.6",
     "react": "18.2.0",
-    "react-native": "0.71.3"
+    "react-native": "0.71.3",
+    "react-native-mmkv": "^2.6.3",
+    "react-native-paper": "^5.3.1",
+    "react-native-safe-area-context": "4.5.0",
+    "react-native-vector-icons": "^9.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
