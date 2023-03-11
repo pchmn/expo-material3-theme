@@ -27,11 +27,7 @@
   "private": true,
   "expo": {
     "autolinking": {
-      "nativeModulesDir": "..",
-      "exclude": [
-        "expo-splash-screen",
-        "expo-status-bar"
-      ]
+      "nativeModulesDir": ".."
     }
   }
 }
