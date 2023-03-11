@@ -5,7 +5,7 @@ export function ComponentsExampleView() {
   return (
     <Flex gap={40} padding={20}>
       <Flex gap={20}>
-        <Text variant="headlineSmall">Buttons</Text>
+        <Text variant="headlineSmall">Themed buttons</Text>
         <Button mode="contained" onPress={() => {}}>
           Contained button
         </Button>

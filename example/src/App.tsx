@@ -9,9 +9,9 @@ import { storage } from './storage';
 import { ComponentsExampleView } from './views/ComponentsExampleView';
 
 export default function App() {
-  const savedBaseThemeColor = storage.getString('baseThemeColor');
+  const sourceColor = storage.getString('sourceColor');
   const [theme, setTheme] = useState(
-    savedBaseThemeColor ? createMaterial3ThemeFromSourceColor(savedBaseThemeColor) : getMaterial3Theme('#FFD9DA')
+    sourceColor ? createMaterial3ThemeFromSourceColor(sourceColor) : getMaterial3Theme()
   );
 
   return (
@@ -35,13 +35,6 @@ function AppContent() {
         position: 'relative',
       }}
     >
-      {/* <Appbar.Header>
-        <Appbar.BackAction onPress={() => {}} />
-        <Appbar.Content title="Title" />
-        <Appbar.Action icon="calendar" onPress={() => {}} />
-        <Appbar.Action icon="magnify" onPress={() => {}} />
-      </Appbar.Header> */}
-
       <ComponentsExampleView />
 
       <Portal>

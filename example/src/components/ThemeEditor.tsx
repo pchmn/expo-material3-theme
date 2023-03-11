@@ -1,73 +1,93 @@
 import { createMaterial3ThemeFromSourceColor, getMaterial3Theme } from 'expo-material3-theme';
-import { useState } from 'react';
+import { useColorScheme } from 'react-native';
+import { useMMKVBoolean, useMMKVString } from 'react-native-mmkv';
 import { IconButton, Switch, Text, TouchableRipple } from 'react-native-paper';
 import { useThemeProviderContext } from '../providers/ThemeProvider';
-import { storage } from '../storage';
 import { Flex } from './Flex';
 
-const colors = ['#FFE082', '#ADF2C7', '#E5DFFF', '#FDDDB9'];
+const colors = [
+  {
+    light: '#FFE082',
+    dark: '#FFE082',
+  },
+  {
+    light: '#3E8260',
+    dark: '#ADF2C7',
+  },
+  {
+    light: '#756FAB',
+    dark: '#E5DFFF',
+  },
+  {
+    light: '#9F6C2C',
+    dark: '#FDDDB9',
+  },
+];
 
 export function ThemeEditor() {
-  const [useSystemTheme, setUseSystemTheme] = useState(storage.getBoolean('useSystemTheme') || false);
-  const [baseColor, setBaseColor] = useState<string | undefined>(storage.getString('baseThemeColor'));
+  const colorScheme = useColorScheme();
   const { setTheme } = useThemeProviderContext();
 
-  const toggleUseSystemTheme = () => {
-    if (useSystemTheme) {
-      setUseSystemTheme(false);
-      storage.set('useSystemTheme', false);
+  const [usePredifinedTheme, setUsePredifinedTheme] = useMMKVBoolean('usePredifinedTheme');
+  const [sourceColor, setSourceColor] = useMMKVString('sourceColor');
+
+  const toggleUsePredefinedTheme = () => {
+    if (usePredifinedTheme) {
+      setUsePredifinedTheme(false);
     } else {
-      setTheme(getMaterial3Theme('#FFD9DA'));
-      setUseSystemTheme(true);
-      storage.set('useSystemTheme', true);
-      setBaseColor(undefined);
-      storage.delete('baseThemeColor');
+      setUsePredifinedTheme(true);
+      setSourceColor(undefined);
+      setTheme(getMaterial3Theme());
     }
   };
 
-  const handleBaseColorChange = (color: string) => {
-    if (useSystemTheme) {
+  const handleSourceColorChange = (color: string) => {
+    if (usePredifinedTheme) {
       return;
     }
-    setBaseColor(color);
-    storage.set('baseThemeColor', color);
+    setSourceColor(color);
     setTheme(createMaterial3ThemeFromSourceColor(color));
   };
 
   return (
     <Flex gap={20} style={{ paddingTop: 20 }}>
       <Flex direction="row" justify="space-between">
-        <Text>Use system theme</Text>
-        <Switch value={useSystemTheme} onValueChange={toggleUseSystemTheme} />
+        <Text>Use predefined theme</Text>
+        <Switch value={usePredifinedTheme !== false} onValueChange={toggleUsePredefinedTheme} />
       </Flex>
 
       <Flex gap={20}>
-        <Text>Base color</Text>
+        <Text>Select source color</Text>
         <Flex gap={20} direction="row" justify="center">
-          {colors.map((color) => (
-            <TouchableRipple
-              style={{ height: 50, width: 50, borderRadius: 50 }}
-              onPress={() => handleBaseColorChange(color)}
-              borderless
-              rippleColor="rgba(0, 0, 0, .32)"
-              disabled={useSystemTheme}
-              key={color}
-            >
-              <Flex
-                backgroundColor={color}
-                justify="center"
-                align="center"
-                style={{
-                  height: 50,
-                  width: 50,
-                  borderRadius: 50,
-                  opacity: useSystemTheme ? 0.5 : 1,
-                }}
+          {colors.map(({ light, dark }) => {
+            const color = colorScheme === 'dark' ? dark : light;
+            return (
+              <TouchableRipple
+                style={{ height: 50, width: 50, borderRadius: 50 }}
+                onPress={() => handleSourceColorChange(color)}
+                borderless
+                rippleColor="rgba(0, 0, 0, .32)"
+                disabled={usePredifinedTheme}
+                key={color}
               >
-                {color === baseColor && <IconButton icon="check" iconColor="#000" size={20} />}
-              </Flex>
-            </TouchableRipple>
-          ))}
+                <Flex
+                  backgroundColor={color}
+                  justify="center"
+                  align="center"
+                  style={{
+                    height: 50,
+                    width: 50,
+                    borderRadius: 50,
+                    opacity: usePredifinedTheme ? 0.5 : 1,
+                  }}
+                >
+                  {sourceColor && [light, dark].includes(sourceColor) && (
+                    <IconButton icon="check" iconColor="#000" size={20} />
+                  )}
+                </Flex>
+              </TouchableRipple>
+            );
+          })}
         </Flex>
       </Flex>
     </Flex>
