@@ -19,9 +19,6 @@ PODS:
     - React-Core
     - React-RCTAppDelegate
     - ReactCommon/turbomodule/core
-  - EXSplashScreen (0.18.1):
-    - ExpoModulesCore
-    - React-Core
   - FBLazyVector (0.71.3)
   - FBReactNativeSpec (0.71.3):
     - RCT-Folly (= 2021.07.22.00)
@@ -398,7 +395,6 @@ DEPENDENCIES:
   - ExpoKeepAwake (from `../node_modules/expo-keep-awake/ios`)
   - ExpoMaterial3Theme (from `../../ios`)
   - ExpoModulesCore (from `../node_modules/expo-modules-core`)
-  - EXSplashScreen (from `../node_modules/expo-splash-screen/ios`)
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
   - FBReactNativeSpec (from `../node_modules/react-native/React/FBReactNativeSpec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
@@ -465,8 +461,6 @@ EXTERNAL SOURCES:
     :path: "../../ios"
   ExpoModulesCore:
     :path: "../node_modules/expo-modules-core"
-  EXSplashScreen:
-    :path: "../node_modules/expo-splash-screen/ios"
   FBLazyVector:
     :path: "../node_modules/react-native/Libraries/FBLazyVector"
   FBReactNativeSpec:
@@ -549,7 +543,6 @@ SPEC CHECKSUMS:
   ExpoKeepAwake: 69f5f627670d62318410392d03e0b5db0f85759a
   ExpoMaterial3Theme: 7625b6e5e827c1c0fd2a93f3766e5e10a9230de9
   ExpoModulesCore: 1667335d4f4c9b7801990930e6f0eea42c916a21
-  EXSplashScreen: cd7fb052dff5ba8311d5c2455ecbebffe1b7a8ca
   FBLazyVector: 60195509584153283780abdac5569feffb8f08cc
   FBReactNativeSpec: 9c191fb58d06dc05ab5559a5505fc32139e9e4a2
   fmt: ff9d55029c625d3757ed641535fd4a75fedc7ce9
