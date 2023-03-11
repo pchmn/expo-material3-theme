@@ -4,6 +4,8 @@ specifiers:
   '@babel/core': ^7.20.0
   '@types/react': ~18.0.14
   expo: ~48.0.6
+  expo-splash-screen: ~0.18.1
+  expo-status-bar: ~1.4.4
   react: 18.2.0
   react-native: 0.71.3
   react-native-mmkv: ^2.6.3
@@ -14,6 +16,8 @@ specifiers:
 
 dependencies:
   expo: 48.0.6_@babel+core@7.21.0
+  expo-splash-screen: 0.18.1_expo@48.0.6
+  expo-status-bar: 1.4.4
   react: 18.2.0
   react-native: 0.71.3_q2tyk3gci27qk4qoatek53e4vi
   react-native-mmkv: 2.6.3_yqouayos4dnow7nnkhah4yzuzq
@@ -1511,6 +1515,21 @@ packages:
       - supports-color
     dev: false
 
+  /@expo/configure-splash-screen/0.6.0:
+    resolution: {integrity: sha512-4DyPoNXJqx9bN4nEwF3HQreo//ECu7gDe1Xor3dnnzFm9P/VDxAKdbEhA0n+R6fgkNfT2onVHWijqvdpTS3Xew==}
+    engines: {node: '>=12'}
+    hasBin: true
+    dependencies:
+      color-string: 1.9.1
+      commander: 5.1.0
+      fs-extra: 9.1.0
+      glob: 7.2.3
+      lodash: 4.17.21
+      pngjs: 5.0.0
+      xcode: 3.0.1
+      xml-js: 1.6.11
+    dev: false
+
   /@expo/dev-server/0.2.3:
     resolution: {integrity: sha512-9+6QGRdymj3dmTp1vUpROvWJ+Ezz6Qp9xHafAcaRHzw322pUCOiRKxTYqDqYYZ/72shrHPGQ2CiIXTnV1vM2tA==}
     dependencies:
@@ -1625,6 +1644,26 @@ packages:
       '@xmldom/xmldom': 0.7.9
       base64-js: 1.5.1
       xmlbuilder: 14.0.0
+    dev: false
+
+  /@expo/prebuild-config/6.0.0:
+    resolution: {integrity: sha512-UW0QKAoRelsalVMhAG1tmegwS+2tbefvUi6/0QiKPlMLg8GFDQ5ZnzsSmuljD0SzT5yGg8oSpKYhnrXJ6pRmIQ==}
+    peerDependencies:
+      expo-modules-autolinking: '>=0.8.1'
+    dependencies:
+      '@expo/config': 8.0.2
+      '@expo/config-plugins': 6.0.1
+      '@expo/config-types': 48.0.0
+      '@expo/image-utils': 0.3.22
+      '@expo/json-file': 8.2.37
+      debug: 4.3.4
+      fs-extra: 9.1.0
+      resolve-from: 5.0.0
+      semver: 7.3.2
+      xml2js: 0.4.23
+    transitivePeerDependencies:
+      - encoding
+      - supports-color
     dev: false
 
   /@expo/prebuild-config/6.0.0_6weo4dzsrefthwodkc5gdxxcii:
@@ -2947,6 +2986,11 @@ packages:
     engines: {node: '>= 6'}
     dev: false
 
+  /commander/5.1.0:
+    resolution: {integrity: sha512-P0CysNDQ7rtVw4QIQtm+MRxV66vKFSvlsQvGYXZWR3qFU0jlMKHZZZgw8e+8DSah4UDKMqnknRDQz+xuQXQ/Zg==}
+    engines: {node: '>= 6'}
+    dev: false
+
   /commander/7.2.0:
     resolution: {integrity: sha512-QrWXB+ZQSVPmIWIhtEO9H+gwHaMGYiF5ChvoJ+K9ZGHG/sVsa6yiesAD1GC/x46sET00Xlwo1u49RVVVzvcSkw==}
     engines: {node: '>= 10'}
@@ -3435,6 +3479,24 @@ packages:
     dependencies:
       compare-versions: 3.6.0
       invariant: 2.2.4
+    dev: false
+
+  /expo-splash-screen/0.18.1_expo@48.0.6:
+    resolution: {integrity: sha512-1di1kuh14likGUs3fyVZWAqEMxhmdAjpmf9T8Qk5OzUa5oPEMEDYB2e2VprddWnJNBVVe/ojBDSCY8w56/LS0Q==}
+    peerDependencies:
+      expo: '*'
+    dependencies:
+      '@expo/configure-splash-screen': 0.6.0
+      '@expo/prebuild-config': 6.0.0
+      expo: 48.0.6_@babel+core@7.21.0
+    transitivePeerDependencies:
+      - encoding
+      - expo-modules-autolinking
+      - supports-color
+    dev: false
+
+  /expo-status-bar/1.4.4:
+    resolution: {integrity: sha512-5DV0hIEWgatSC3UgQuAZBoQeaS9CqeWRZ3vzBR9R/+IUD87Adbi4FGhU10nymRqFXOizGsureButGZIXPs7zEA==}
     dev: false
 
   /expo/48.0.6_@babel+core@7.21.0:
@@ -5668,6 +5730,11 @@ packages:
     engines: {node: '>=4.0.0'}
     dev: false
 
+  /pngjs/5.0.0:
+    resolution: {integrity: sha512-40QW5YalBNfQo5yRYmiw7Yz6TKKVr3h6970B2YE+3fQpsWcrbj1PzJgxeJ19DRQjhMbKPIuMY8rFaXc8moolVw==}
+    engines: {node: '>=10.13.0'}
+    dev: false
+
   /posix-character-classes/0.1.1:
     resolution: {integrity: sha512-xTgYBc3fuo7Yt7JbiuFxSYGToMoz8fLoE6TC9Wx1P/u+LfeThMOAqmuyECnlBaaJb+u1m9hHiXUEtwW4OzfUJg==}
     engines: {node: '>=0.10.0'}
@@ -7134,6 +7201,13 @@ packages:
     dependencies:
       simple-plist: 1.3.1
       uuid: 7.0.3
+    dev: false
+
+  /xml-js/1.6.11:
+    resolution: {integrity: sha512-7rVi2KMfwfWFl+GpPg6m80IVMWXLRjO+PxTq7V2CDhoGak0wzYzFgUY2m4XJ47OGdXd8eLE8EmwfAmdjw7lC1g==}
+    hasBin: true
+    dependencies:
+      sax: 1.2.4
     dev: false
 
   /xml2js/0.4.23:
