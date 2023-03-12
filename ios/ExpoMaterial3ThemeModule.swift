@@ -4,8 +4,12 @@ public class ExpoMaterial3ThemeModule: Module {
   public func definition() -> ModuleDefinition {
     Name("ExpoMaterial3Theme")
 
-    Function("getSystemTheme") { () -> String? in
-      nil
+    Function("getSystemTheme") { () in
+      return nil
+    }
+
+    AsyncFunction("getSystemThemeAsync") { () in
+     return nil
     }
   }
 }
