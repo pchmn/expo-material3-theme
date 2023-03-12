@@ -1,0 +1,18 @@
+{
+  "cli": {
+    "promptToConfigurePushNotifications": false
+  },
+  "build": {
+    "preview": {
+      "channel": "preview",
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      },
+      "ios": {
+        "simulator": true,
+        "resourceClass": "m1-medium"
+      }
+    }
+  }
+}

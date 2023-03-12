@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "expo-material3-theme-example",
-    "slug": "expo-material3-theme-example",
+    "slug": "expomaterial3themeexample",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -11,7 +11,9 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "bundleIdentifier": "expo.modules.material3theme.example"
     },
@@ -24,6 +26,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "27607cf1-662d-4185-9291-fef03bfd6601"
+      }
+    },
+    "owner": "pchmn"
   }
 }
