@@ -7,7 +7,7 @@
     "ios": "expo run:ios --device",
     "web": "expo start --web",
     "prebuild": "expo prebuild --clean",
-    "eas-build-pre-install": "npm install --global pnpm@7.x"
+    "eas-build-pre-install": "npm install --global pnpm@7.x && cd ../ && pnpm install"
   },
   "dependencies": {
     "expo": "~48.0.6",
