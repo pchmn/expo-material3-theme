@@ -6,7 +6,8 @@
     "android": "expo run:android",
     "ios": "expo run:ios --device",
     "web": "expo start --web",
-    "prebuild": "expo prebuild --clean"
+    "prebuild": "expo prebuild --clean",
+    "eas-build-pre-install": "npm install --global pnpm@7.x"
   },
   "dependencies": {
     "expo": "~48.0.6",
