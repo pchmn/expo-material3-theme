@@ -1,4 +1,3 @@
-import { createMaterial3ThemeFromSourceColor, getMaterial3Theme } from 'expo-material3-theme';
 import { useColorScheme } from 'react-native';
 import { useMMKVBoolean, useMMKVString } from 'react-native-mmkv';
 import { IconButton, Switch, Text, TouchableRipple } from 'react-native-paper';
@@ -26,7 +25,7 @@ const colors = [
 
 export function ThemeEditor() {
   const colorScheme = useColorScheme();
-  const { setTheme } = useThemeProviderContext();
+  const { updateTheme, resetTheme } = useThemeProviderContext();
 
   const [usePredifinedTheme, setUsePredifinedTheme] = useMMKVBoolean('usePredifinedTheme');
   const [sourceColor, setSourceColor] = useMMKVString('sourceColor');
@@ -37,7 +36,7 @@ export function ThemeEditor() {
     } else {
       setUsePredifinedTheme(true);
       setSourceColor(undefined);
-      setTheme(getMaterial3Theme());
+      resetTheme();
     }
   };
 
@@ -46,7 +45,7 @@ export function ThemeEditor() {
       return;
     }
     setSourceColor(color);
-    setTheme(createMaterial3ThemeFromSourceColor(color));
+    updateTheme(color);
   };
 
   return (

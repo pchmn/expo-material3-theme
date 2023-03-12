@@ -2,11 +2,12 @@ import { Material3Theme } from 'expo-material3-theme';
 import { createContext, PropsWithChildren, useContext, useMemo } from 'react';
 import { StatusBar, useColorScheme } from 'react-native';
 import { MD3DarkTheme, MD3LightTheme, Provider as PaperProvider } from 'react-native-paper';
-import { Flex } from '../components/Flex';
 
 type ThemeProviderProps = {
   theme: Material3Theme;
-  setTheme: (theme: Material3Theme) => void;
+  setTheme?: (theme: Material3Theme) => void;
+  updateTheme: (sourceColor: string) => void;
+  resetTheme: () => void;
 };
 
 const ThemeProviderContext = createContext<ThemeProviderProps>({} as ThemeProviderProps);
@@ -19,7 +20,7 @@ export function useThemeProviderContext() {
   return ctx;
 }
 
-export function ThemeProvider({ children, theme, setTheme }: PropsWithChildren<ThemeProviderProps>) {
+export function ThemeProvider({ children, theme, ...otherProps }: PropsWithChildren<ThemeProviderProps>) {
   const colorScheme = useColorScheme();
 
   const paperTheme = useMemo(
@@ -29,17 +30,13 @@ export function ThemeProvider({ children, theme, setTheme }: PropsWithChildren<T
   );
 
   return (
-    <ThemeProviderContext.Provider value={{ theme, setTheme }}>
+    <ThemeProviderContext.Provider value={{ theme, ...otherProps }}>
       <StatusBar
         barStyle={colorScheme === 'dark' ? 'light-content' : 'dark-content'}
         backgroundColor="transparent"
         translucent
       />
-      <PaperProvider theme={paperTheme}>
-        <Flex flex={1} backgroundColor={paperTheme.colors.background}>
-          {children}
-        </Flex>
-      </PaperProvider>
+      <PaperProvider theme={paperTheme}>{children}</PaperProvider>
     </ThemeProviderContext.Provider>
   );
 }
