@@ -58,11 +58,6 @@ class ExpoMaterial3ThemeModule : Module() {
 
   @RequiresApi(Build.VERSION_CODES.S)
   private fun getCorePalette(resources: Resources): Map<String, Map<String, String>> {
-    fun getColor(key: Int): String {
-      val hex = getApplicationResources()?.getColor(key, null)
-      return String.format("#%06X", 0xFFFFFF and hex!!)
-    }
-
     fun colorToHex(key: Int): String {
       val hex = resources.getColor(key, null)
       return String.format("#%06X", 0xFFFFFF and hex)
