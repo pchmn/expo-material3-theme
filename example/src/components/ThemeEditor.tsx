@@ -30,20 +30,15 @@ export function ThemeEditor() {
   const [usePredifinedTheme, setUsePredifinedTheme] = useMMKVBoolean('usePredifinedTheme');
   const [sourceColor, setSourceColor] = useMMKVString('sourceColor');
 
-  const toggleUsePredefinedTheme = () => {
-    if (usePredifinedTheme) {
-      setUsePredifinedTheme(false);
-    } else {
-      setUsePredifinedTheme(true);
-      setSourceColor(undefined);
+  const handleUsePredifinedThemeChange = (value: boolean) => {
+    if (value) {
       resetTheme();
+      setSourceColor(undefined);
     }
+    setUsePredifinedTheme(value);
   };
 
   const handleSourceColorChange = (color: string) => {
-    if (usePredifinedTheme) {
-      return;
-    }
     setSourceColor(color);
     updateTheme(color);
   };
@@ -52,7 +47,7 @@ export function ThemeEditor() {
     <Flex gap={20} style={{ paddingTop: 20 }}>
       <Flex direction="row" justify="space-between">
         <Text>Use predefined theme</Text>
-        <Switch value={usePredifinedTheme !== false} onValueChange={toggleUsePredefinedTheme} />
+        <Switch value={usePredifinedTheme !== false} onValueChange={handleUsePredifinedThemeChange} />
       </Flex>
 
       <Flex gap={20}>
