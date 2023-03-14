@@ -66,7 +66,7 @@ export async function getMaterial3ThemeAsync(fallbackSourceColor: string = '#675
  * @param sourceColor source color for the theme
  * @returns Material3 theme
  */
-export function createMaterial3Theme(sourceColor: string = '#6750A4'): Material3Theme {
+export function createMaterial3Theme(sourceColor: string): Material3Theme {
   return createThemeFromSourceColor(sourceColor);
 }
 
