@@ -1,10 +1,8 @@
 # expo-material3-theme
 
-This expo module allows you retrieve the [material3 dynamic theme](https://developer.android.com/develop/ui/views/theming/dynamic-colors) from your Android 12+ device, so that you can use it in your expo (or bare react-native) app.
+This expo module allows you retrieve the [material3 dynamic theme](https://developer.android.com/develop/ui/views/theming/dynamic-colors) from Android 12+ devices, so that you can use it in your expo (or bare react-native) app.
 
 For devices not compatible (iOS or older Android versions) a fallback theme is returned.
-
-![example-android](docs/example-android.gif)
 
 ## Features
 
@@ -12,12 +10,14 @@ For devices not compatible (iOS or older Android versions) a fallback theme is r
 - Generate material3 theme based on a source color (using [`@material/material-color-utilities`](https://github.com/material-foundation/material-color-utilities/tree/main/typescript))
 - Material3 theme compatible with [`react-native-paper`](https://callstack.github.io/react-native-paper/)
 
+![example-android](docs/example-android.gif)
+
 ## Installation
 
 ### Installation in managed Expo projects
 
 ```
-expo install expo-material3-theme && expo prebuild
+expo install expo-material3-theme
 ```
 
 ### Installation in bare React Native projects
@@ -36,7 +36,7 @@ pnpm add expo-material3-theme && npx pod-install
 
 ### Retrieve theme
 
-A basic usage would be to retrieve the material3 theme from your device (or a fallback theme if not supported) by using `useMaterial3Theme` hook:
+A basic usage would be to retrieve the material3 theme from user device (or a fallback theme if not supported) by using `useMaterial3Theme` hook:
 
 ```tsx
 import { useMaterial3Theme } from 'expo-material3-theme';
@@ -69,7 +69,7 @@ function App() {
 
   return (
     <View style={{ backgroundColor: theme[colorScheme].background }}>
-      {/* Update theme by generating a new one based on a source color */}
+      {/* Update theme by generating a new one based on #3E8260 color */}
       <Button onPress={() => updateTheme('#3E8260')}>Update theme</Button>
       {/* Reset theme to default (system or fallback) */}
       <Button onPress={() => resetTheme()}>Reset theme</Button>
@@ -109,3 +109,11 @@ function App() {
 ```
 
 ## [API Reference](docs/api-reference.md)
+
+- [`useMaterial3Theme`](docs/api-reference.md#usematerial3theme)
+- [`getMaterial3Theme`](docs/api-reference.md#getmaterial3theme)
+- [`createMaterial3Theme`](docs/api-reference.md#creatematerial3theme)
+
+## License
+
+This project is released under the [MIT License](https://github.com/pchmn/firebase-cli-github-action/blob/main/license).
