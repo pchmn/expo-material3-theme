@@ -1,14 +1,16 @@
-# expo-material3-theme
+# 🎨 expo-material3-theme
 
 This expo module allows you retrieve the [material3 dynamic theme](https://developer.android.com/develop/ui/views/theming/dynamic-colors) from Android 12+ devices, so that you can use it in your expo (or bare react-native) app.
 
 For devices not compatible (iOS or older Android versions) a fallback theme is returned.
 
-## Features
+## ✨ Features
 
 - Retrieve material3 dynamic theme from Android 12+ devices (or a fallback theme if device is not compatible)
 - Generate material3 theme based on a source color (using [`@material/material-color-utilities`](https://github.com/material-foundation/material-color-utilities/tree/main/typescript))
 - Material3 theme compatible with [`react-native-paper`](https://callstack.github.io/react-native-paper/)
+
+<br>
 
 ![example-android](docs/example-android.gif)
 
@@ -25,7 +27,7 @@ expo install expo-material3-theme
 For bare React Native projects, you must ensure that you have [installed and configured the `expo` package](https://docs.expo.dev/bare/installing-expo-modules/) before continuing.
 
 ```sh
-npm i expo-material3-theme && npx pod-install
+npm i --save expo-material3-theme && npx pod-install
 # or
 yarn add expo-material3-theme && npx pod-install
 # or
@@ -78,7 +80,7 @@ function App() {
 }
 ```
 
-> `updateTheme()` and `resetTheme()` will change the theme returns by `useMaterial3Theme()`, it will not change theme at system level
+> ℹ️ `updateTheme()` and `resetTheme()` will change the theme returned by `useMaterial3Theme()`, it will not change theme at system level
 
 ### Usage with `react-native-paper`
 
@@ -108,11 +110,19 @@ function App() {
 }
 ```
 
-## [API Reference](docs/api-reference.md)
+## [API Reference](docs/API.md)
 
-- [`useMaterial3Theme`](docs/api-reference.md#usematerial3theme)
-- [`getMaterial3Theme`](docs/api-reference.md#getmaterial3theme)
-- [`createMaterial3Theme`](docs/api-reference.md#creatematerial3theme)
+- [`useMaterial3Theme`](docs/API.md#usematerial3theme)
+- [`getMaterial3Theme`](docs/API.md#getmaterial3theme)
+- [`createMaterial3Theme`](docs/API.md#creatematerial3theme)
+
+## ⚠️ Activity recreation
+
+When material3 dynamic theme is changed on Android 12+ devices, it is a configuration change and the system will recreate an Activity.
+
+This configuration change can't be disable: "Some configuration changes always cause the activity to restart. You can't disable them. For example, you can't disable the dynamic colors change introduced in API 32" (cf official [doc](https://developer.android.com/guide/topics/resources/runtime-changes#restrict-activity)).
+
+So be aware that when users change their theme then go back to your app, all local state may be lost (and may cause some flickering) if your don't handle it.
 
 ## License
 
