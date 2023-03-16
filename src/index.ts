@@ -4,12 +4,15 @@ import ExpoMaterial3ThemeModule from './ExpoMaterial3ThemeModule';
 import { createThemeFromSourceColor, createThemeFromSystemSchemes } from './utils/createMaterial3Theme';
 
 /**
- * Hook to get the Material3 theme from the system (works only on Android 12+).
+ * Hook to handle material3 theme
  *
- * If the system does not support Material3, it will return a theme based on the fallback source color.
+ * It returns:
+ * - the material3 theme from the system (or a fallback theme if not supported)
+ * - a function to update the theme based on a source color
+ * - a function to reset the theme to the system theme (or the fallback theme if not supported)
  *
- * @param fallbackSourceColor fallback source color for the theme (default to #6750A4)
- * @returns Material3 theme
+ * @param fallbackSourceColor source color for the fallback theme (default to #6750A4)
+ * @returns
  */
 export function useMaterial3Theme(params?: { fallbackSourceColor?: string; overwrite?: boolean }) {
   const { fallbackSourceColor = '#6750A4', overwrite } = params || {};
@@ -33,8 +36,8 @@ export function useMaterial3Theme(params?: { fallbackSourceColor?: string; overw
  *
  * If the system does not support Material3, it will return a theme based on the fallback source color.
  *
- * @param fallbackSourceColor fallback source color for the theme (default to #6750A4)
- * @returns Material3 theme
+ * @param fallbackSourceColor source color for the fallback theme (default to #6750A4)
+ * @returns
  */
 export function getMaterial3Theme(fallbackSourceColor: string = '#6750A4'): Material3Theme {
   const systemSchemes = ExpoMaterial3ThemeModule.getSystemTheme() as {
@@ -64,7 +67,7 @@ export async function getMaterial3ThemeAsync(fallbackSourceColor: string = '#675
  * Create a Material3 theme based on the source color.
  *
  * @param sourceColor source color for the theme
- * @returns Material3 theme
+ * @returns
  */
 export function createMaterial3Theme(sourceColor: string): Material3Theme {
   return createThemeFromSourceColor(sourceColor);
