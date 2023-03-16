@@ -1,6 +1,6 @@
 # 🎨 expo-material3-theme
 
-This expo module allows you retrieve the [material3 dynamic theme](https://developer.android.com/develop/ui/views/theming/dynamic-colors) from Android 12+ devices, so that you can use it in your expo (or bare react-native) app.
+This [expo module](https://docs.expo.dev/modules/overview/) allows you retrieve the [material3 dynamic theme](https://developer.android.com/develop/ui/views/theming/dynamic-colors) from Android 12+ devices, so that you can use it in your expo (or bare react-native) app.
 
 For devices not compatible (iOS or older Android versions) a fallback theme is returned.
 
@@ -109,6 +109,18 @@ function App() {
   );
 }
 ```
+
+## Example
+
+You can see an example app in the [`example`](./example/) folder.
+
+### Android example
+
+Extract [zip file](docs/example-apps.zip), and install `expo-material3-theme-example-android.apk` on your device.
+
+### iOS example
+
+This is a file for iOS simulator. Extract [zip file](docs/example-apps.zip), and drag and drop `expo-material3-theme-example-ios` into your emulator.
 
 ## [API Reference](docs/API.md)
 
