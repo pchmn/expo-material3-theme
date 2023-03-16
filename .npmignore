@@ -9,3 +9,9 @@ __tests__
 /android/src/test/
 /android/build/
 /example/
+/docs/
+/src/
+/.eslintrc.js
+/.prettierrc.js
+/pnpm-lock.yaml
+/tsconfig.json

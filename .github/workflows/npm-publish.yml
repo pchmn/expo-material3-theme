@@ -1,0 +1,32 @@
+name: Publish Package to npm
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: 🏗 Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 7.x
+
+      - name: 🏗 Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+          cache: pnpm
+
+      - name: 📦 Install dependencies
+        run: pnpm install
+
+      - name: 🔨 Build package
+        run: pnpm build:ci
+
+      - name: 🚀 Publish package
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

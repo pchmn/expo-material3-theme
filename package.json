@@ -1,11 +1,12 @@
 {
-  "name": "expo-material3-theme",
+  "name": "@pchmn/expo-material3-theme",
   "version": "0.1.0",
-  "description": "Expo module to generate Material 3 theme",
+  "description": "Expo module to retrieve material 3 theme from Android 12+ devices",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "scripts": {
     "build": "expo-module build",
+    "build:ci": "CI=1 pnpm build",
     "clean": "expo-module clean",
     "lint": "expo-module lint",
     "test": "expo-module test",
