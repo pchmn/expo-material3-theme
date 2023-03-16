@@ -29,12 +29,12 @@ jobs:
 
       - name: 🚀 Publish next package
         if: contains(github.ref_name, 'beta')
-        run: npm publish --tag next
+        run: npm publish --tag next --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: 🚀 Publish package
         if: "!contains(github.ref_name, 'beta')"
-        run: npm publish
+        run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
