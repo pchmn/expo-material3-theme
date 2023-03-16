@@ -1,25 +1,51 @@
-# 🎨 expo-material3-theme
+<div align="center">
 
-This [expo module](https://docs.expo.dev/modules/overview/) allows you retrieve the [material3 dynamic theme](https://developer.android.com/develop/ui/views/theming/dynamic-colors) from Android 12+ devices, so that you can use it in your expo (or bare react-native) app.
+![image](https://user-images.githubusercontent.com/12658241/225726041-d086724a-9bef-49e1-a21b-2a91d5a3b5e9.png)
+
+</div>
+
+<div align="center">
+
+[![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/pchmn/expo-material3-theme/blob/main/LICENSE)
+[![npm latest package](https://img.shields.io/npm/v/@pchmn/expo-material3-theme/latest.svg)](https://www.npmjs.com/package/@pchmn/expo-material3-theme)
+[![platform - android](https://img.shields.io/badge/platform-Android-3ddc84.svg?logo=android)](https://www.android.com)
+[![platform - ios](https://img.shields.io/badge/platform-iOS-000.svg?logo=apple)](https://developer.apple.com/ios)
+
+</div>
+
+<h1 align="center">Expo Material 3 Theme</h1>
+
+<div align="center">
+
+This [expo module](https://docs.expo.dev/modules/overview/) allows you retrieve the [Material 3 dynamic theme](https://developer.android.com/develop/ui/views/theming/dynamic-colors) from Android 12+ devices, so that you can use it in your expo (or bare react-native) app.
 
 For devices not compatible (iOS or older Android versions) a fallback theme is returned.
 
-## ✨ Features
-
-- Retrieve material3 dynamic theme from Android 12+ devices (or a fallback theme if device is not compatible)
-- Generate material3 theme based on a source color (using [`@material/material-color-utilities`](https://github.com/material-foundation/material-color-utilities/tree/main/typescript))
-- Material3 theme compatible with [`react-native-paper`](https://callstack.github.io/react-native-paper/)
+</div>
 
 <br>
 
+## ✨ Features
+
+- Retrieve Material 3 dynamic theme from Android 12+ devices (or a fallback theme if device is not compatible)
+- Generate Material 3 theme based on a source color (using [`@material/material-color-utilities`](https://github.com/material-foundation/material-color-utilities/tree/main/typescript))
+- Material 3 theme compatible with [`react-native-paper`](https://callstack.github.io/react-native-paper/)
+
+<br>
+
+<div align="center">
+
 ![example-android](docs/example-android.gif)
+
+</div>
+<br>
 
 ## Installation
 
 ### Installation in managed Expo projects
 
 ```
-expo install expo-material3-theme
+expo install @pchmn/expo-material3-theme
 ```
 
 ### Installation in bare React Native projects
@@ -27,21 +53,21 @@ expo install expo-material3-theme
 For bare React Native projects, you must ensure that you have [installed and configured the `expo` package](https://docs.expo.dev/bare/installing-expo-modules/) before continuing.
 
 ```sh
-npm i --save expo-material3-theme && npx pod-install
+npm i --save @pchmn/expo-material3-theme && npx pod-install
 # or
-yarn add expo-material3-theme && npx pod-install
+yarn add @pchmn/expo-material3-theme && npx pod-install
 # or
-pnpm add expo-material3-theme && npx pod-install
+pnpm add @pchmn/expo-material3-theme && npx pod-install
 ```
 
 ## Usage
 
 ### Retrieve theme
 
-A basic usage would be to retrieve the material3 theme from user device (or a fallback theme if not supported) by using `useMaterial3Theme` hook:
+A basic usage would be to retrieve the Material 3 theme from user device (or a fallback theme if not supported) by using `useMaterial3Theme` hook:
 
 ```tsx
-import { useMaterial3Theme } from 'expo-material3-theme';
+import { useMaterial3Theme } from '@pchmn/expo-material3-theme';
 import { useColorScheme, View, Button } from 'react-native';
 
 function App() {
@@ -62,7 +88,7 @@ function App() {
 You may also want to update the theme by generating a new one, or go back to the default theme (to let users personalize your app for example). You can do it with `useMaterial3Theme` hook:
 
 ```tsx
-import { useMaterial3Theme } from 'expo-material3-theme';
+import { useMaterial3Theme } from '@pchmn/expo-material3-theme';
 import { useColorScheme, View, Button } from 'react-native';
 
 function App() {
@@ -84,10 +110,10 @@ function App() {
 
 ### Usage with `react-native-paper`
 
-`expo-material3-theme` provides a theme compatible with `react-native-paper`, so you can combine both libraries easily:
+`@pchmn/expo-material3-theme` provides a theme compatible with `react-native-paper`, so you can combine both libraries easily:
 
 ```tsx
-import { useMaterial3Theme } from 'expo-material3-theme';
+import { useMaterial3Theme } from '@pchmn/expo-material3-theme';
 import { useMemo } from 'react';
 import { useColorScheme } from 'react-native';
 import { Button, MD3DarkTheme, MD3LightTheme, Provider as PaperProvider } from 'react-native-paper';
