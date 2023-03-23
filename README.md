@@ -45,7 +45,7 @@ For devices not compatible (iOS or older Android versions) a fallback theme is r
 ### Installation in managed Expo projects
 
 ```
-expo install @pchmn/expo-material3-theme
+npx expo install @pchmn/expo-material3-theme
 ```
 
 ### Installation in bare React Native projects
@@ -53,11 +53,7 @@ expo install @pchmn/expo-material3-theme
 For bare React Native projects, you must ensure that you have [installed and configured the `expo` package](https://docs.expo.dev/bare/installing-expo-modules/) before continuing.
 
 ```sh
-npm i --save @pchmn/expo-material3-theme && npx pod-install
-# or
-yarn add @pchmn/expo-material3-theme && npx pod-install
-# or
-pnpm add @pchmn/expo-material3-theme && npx pod-install
+npx expo install @pchmn/expo-material3-theme && npx pod-install
 ```
 
 ## Usage
