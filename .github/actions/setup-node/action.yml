@@ -1,0 +1,34 @@
+name: Setup Node
+description: Setup Node and pnpm
+
+inputs:
+  node-version:
+    description: Version of Node to use
+    default: 18.x
+
+  pnpm-version:
+    description: Version of pnpm to use
+    default: 7.x
+
+  install:
+    description: Run pnpm install
+    default: 'false'
+
+runs:
+  using: composite
+  steps:
+    - name: Setup pnpm
+      uses: pnpm/action-setup@v2
+      with:
+        version: ${{ inputs.pnpm-version }}
+
+    - name: Setup Node
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ inputs.node-version }}
+        cache: pnpm
+
+    - if: ${{ inputs.install == 'true' }}
+      name: Install dependencies
+      shell: bash
+      run: pnpm install

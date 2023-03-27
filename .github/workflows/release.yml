@@ -1,0 +1,24 @@
+name: Release library
+
+on:
+  workflow_dispatch:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: 🏗 Setup node
+        uses: ./.github/actions/setup-node
+        with:
+          install: true
+
+      - name: 🔨 Build package
+        run: pnpm build:ci
+
+      - name: 🚀 Release library
+        run: pnpm release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
