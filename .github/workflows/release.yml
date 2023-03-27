@@ -2,6 +2,12 @@ name: Release library
 
 on:
   workflow_dispatch:
+    inputs:
+      dryRun:
+        description: Dry run
+        type: boolean
+        required: true
+        default: false
 
 jobs:
   release:
@@ -18,7 +24,15 @@ jobs:
         run: pnpm build:ci
 
       - name: 🚀 Release library
+        if: ${{ !github.event.inputs.dryRun }}
         run: pnpm release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: 📖 Release library in dry run mode
+        if: ${{ github.event.inputs.dryRun }}
+        run: pnpm release --dry-run
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
