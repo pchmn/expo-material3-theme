@@ -1,8 +1,5 @@
 {
-  "platforms": ["ios", "android"],
-  "ios": {
-    "modules": ["ExpoMaterial3ThemeModule"]
-  },
+  "platforms": ["android"],
   "android": {
     "modules": ["expo.modules.material3theme.ExpoMaterial3ThemeModule"]
   }
