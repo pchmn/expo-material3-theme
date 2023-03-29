@@ -1,5 +1,6 @@
 import { argbFromHex, Scheme, themeFromSourceColor } from '@importantimport/material-color-utilities';
 import color from 'color';
+
 import { Material3Scheme, Material3Theme, SystemScheme } from '../ExpoMaterial3Theme.types';
 
 const opacity = {
