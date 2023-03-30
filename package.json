@@ -41,6 +41,7 @@
     "@types/react": "^18.0.25",
     "@types/react-native": "^0.70.6",
     "eslint": "^8.37.0",
+    "eslint-plugin-unused-imports": "^2.0.0",
     "expo-module-scripts": "^3.0.4",
     "expo-modules-core": "^1.1.0",
     "husky": "^8.0.3",
