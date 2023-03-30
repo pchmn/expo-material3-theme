@@ -1,6 +1,6 @@
 {
   "name": "@pchmn/expo-material3-theme",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.2",
   "description": "Expo module to retrieve material 3 theme from Android 12+ devices",
   "main": "build/index.js",
   "types": "build/index.d.ts",
