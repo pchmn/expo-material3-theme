@@ -1,20 +1,19 @@
 import { useMaterial3Theme } from 'expo-material3-theme';
 import { useState } from 'react';
-import { Dialog, FAB, Portal, useTheme } from 'react-native-paper';
+import { useMMKVString } from 'react-native-mmkv';
+import { Dialog, FAB, Portal } from 'react-native-paper';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+
 import { Flex } from './components/Flex';
 import { ThemeEditor } from './components/ThemeEditor';
 import { ThemeProvider } from './providers/ThemeProvider';
-import { storage } from './storage';
 import { ComponentsExampleView } from './views/ComponentsExampleView';
 
 export default function App() {
-  const sourceColor = storage.getString('sourceColor');
+  const [sourceColor] = useMMKVString('sourceColor');
   const { theme, updateTheme, resetTheme } = useMaterial3Theme({
-    fallbackSourceColor: sourceColor,
-    overwrite: !!sourceColor,
+    sourceColor,
   });
-  // const [theme, setTheme] = useState(sourceColor ? createMaterial3ThemeFromSourceColor(sourceColor) : material3Theme);
 
   return (
     <ThemeProvider theme={theme} resetTheme={resetTheme} updateTheme={updateTheme}>
@@ -24,7 +23,6 @@ export default function App() {
 }
 
 function AppContent() {
-  const theme = useTheme();
   const insets = useSafeAreaInsets();
   const [visible, setVisible] = useState(false);
 
@@ -33,7 +31,6 @@ function AppContent() {
   return (
     <Flex
       flex={1}
-      backgroundColor={theme.colors.background}
       style={{
         paddingTop: insets.top,
         position: 'relative',

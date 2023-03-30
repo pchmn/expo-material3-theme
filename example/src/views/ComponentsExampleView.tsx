@@ -1,4 +1,5 @@
 import { Button, Text } from 'react-native-paper';
+
 import { Flex } from '../components/Flex';
 
 export function ComponentsExampleView() {

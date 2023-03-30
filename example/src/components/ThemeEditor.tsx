@@ -1,8 +1,9 @@
 import { useColorScheme } from 'react-native';
 import { useMMKVBoolean, useMMKVString } from 'react-native-mmkv';
 import { IconButton, Switch, Text, TouchableRipple } from 'react-native-paper';
-import { useThemeProviderContext } from '../providers/ThemeProvider';
+
 import { Flex } from './Flex';
+import { useThemeProviderContext } from '../providers/ThemeProvider';
 
 const colors = [
   {
@@ -27,15 +28,15 @@ export function ThemeEditor() {
   const colorScheme = useColorScheme();
   const { updateTheme, resetTheme } = useThemeProviderContext();
 
-  const [usePredifinedTheme, setUsePredifinedTheme] = useMMKVBoolean('usePredifinedTheme');
+  const [useDefaultTheme, setUseDefaultTheme] = useMMKVBoolean('useDefaultTheme');
   const [sourceColor, setSourceColor] = useMMKVString('sourceColor');
 
-  const handleUsePredifinedThemeChange = (value: boolean) => {
+  const handleUseDefaultThemeChange = (value: boolean) => {
     if (value) {
       resetTheme();
       setSourceColor(undefined);
     }
-    setUsePredifinedTheme(value);
+    setUseDefaultTheme(value);
   };
 
   const handleSourceColorChange = (color: string) => {
@@ -46,8 +47,8 @@ export function ThemeEditor() {
   return (
     <Flex gap={20} style={{ paddingTop: 20 }}>
       <Flex direction="row" justify="space-between">
-        <Text>Use predefined theme</Text>
-        <Switch value={usePredifinedTheme !== false} onValueChange={handleUsePredifinedThemeChange} />
+        <Text>Use default theme</Text>
+        <Switch value={useDefaultTheme !== false} onValueChange={handleUseDefaultThemeChange} />
       </Flex>
 
       <Flex gap={20}>
@@ -61,7 +62,7 @@ export function ThemeEditor() {
                 onPress={() => handleSourceColorChange(color)}
                 borderless
                 rippleColor="rgba(0, 0, 0, .32)"
-                disabled={usePredifinedTheme}
+                disabled={useDefaultTheme}
                 key={color}
               >
                 <Flex
@@ -72,7 +73,7 @@ export function ThemeEditor() {
                     height: 50,
                     width: 50,
                     borderRadius: 50,
-                    opacity: usePredifinedTheme ? 0.5 : 1,
+                    opacity: useDefaultTheme ? 0.5 : 1,
                   }}
                 >
                   {sourceColor && [light, dark].includes(sourceColor) && (

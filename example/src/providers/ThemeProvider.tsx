@@ -3,6 +3,8 @@ import { createContext, PropsWithChildren, useContext, useMemo } from 'react';
 import { StatusBar, useColorScheme } from 'react-native';
 import { MD3DarkTheme, MD3LightTheme, Provider as PaperProvider } from 'react-native-paper';
 
+import { Flex } from '../components/Flex';
+
 type ThemeProviderProps = {
   theme: Material3Theme;
   setTheme?: (theme: Material3Theme) => void;
@@ -36,7 +38,11 @@ export function ThemeProvider({ children, theme, ...otherProps }: PropsWithChild
         backgroundColor="transparent"
         translucent
       />
-      <PaperProvider theme={paperTheme}>{children}</PaperProvider>
+      <PaperProvider theme={paperTheme}>
+        <Flex flex={1} backgroundColor={paperTheme.colors.background}>
+          {children}
+        </Flex>
+      </PaperProvider>
     </ThemeProviderContext.Provider>
   );
 }
