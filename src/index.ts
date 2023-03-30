@@ -8,20 +8,24 @@ import { createThemeFromSourceColor, createThemeFromSystemSchemes } from './util
 const isSupported = !!ExpoMaterial3ThemeModule && Platform.OS === 'android' && Platform.Version >= 31;
 
 /**
- * Hook to handle material3 theme
+ * Hook to manage material3 theme.
  *
  * It returns:
- * - the material3 theme from the system (or a fallback theme if not supported)
+ * - a Material 3 theme:
+ *   - the system theme (or a fallback theme if not supported) if sourceColor is not provided
+ *   - a theme based on sourceColor if provided
  * - a function to update the theme based on a source color
- * - a function to reset the theme to the system theme (or the fallback theme if not supported)
+ * - a function to reset the theme to default
  *
- * @param fallbackSourceColor source color for the fallback theme (default to #6750A4)
+ * @param params.fallbackSourceColor - optional - source color for the fallback theme (default to #6750A4)
+ * @param params.sourceColor - optional - source color for the theme (overwrite system theme)
  * @returns
  */
-export function useMaterial3Theme(params?: { fallbackSourceColor?: string; overwrite?: boolean }) {
-  const { fallbackSourceColor = '#6750A4', overwrite } = params || {};
+export function useMaterial3Theme(params?: { fallbackSourceColor?: string; sourceColor?: string }) {
+  const { fallbackSourceColor = '#6750A4', sourceColor } = params || {};
+
   const [theme, setTheme] = useState<Material3Theme>(
-    overwrite ? createMaterial3Theme(fallbackSourceColor) : getMaterial3Theme(fallbackSourceColor)
+    sourceColor ? createMaterial3Theme(sourceColor) : getMaterial3Theme(fallbackSourceColor)
   );
 
   const updateTheme = (sourceColor: string) => {
@@ -36,7 +40,7 @@ export function useMaterial3Theme(params?: { fallbackSourceColor?: string; overw
 }
 
 /**
- * Get the Material3 theme from the system (works only on Android 12+).
+ * Get the Material 3 theme from the system (works only on Android 12+).
  *
  * If the system does not support Material3, it will return a theme based on the fallback source color.
  *
@@ -76,7 +80,7 @@ export async function getMaterial3ThemeAsync(fallbackSourceColor: string = '#675
 }
 
 /**
- * Create a Material3 theme based on the source color.
+ * Create a Material 3 theme based on the source color.
  *
  * @param sourceColor source color for the theme
  * @returns
