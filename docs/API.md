@@ -74,7 +74,7 @@ const theme = getMaterial3Theme('#6750A4');
 
 #### Parameters
 
-- `fallbackSourceColor` (optional, default to `#6750A4`): Color used to create a fallback theme if material3 is not supported by the device
+- `fallbackSourceColor` (optional, default to `#6750A4`): Source color for the fallback theme
 
 #### Returns
 
@@ -92,7 +92,7 @@ const theme = createMaterial3Theme('#6750A4');
 
 #### Parameters
 
-- `sourceColor` (required): Color used to create the material3 theme
+- `sourceColor` (required): Source color for the theme
 
 #### Returns
 
