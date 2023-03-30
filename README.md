@@ -44,6 +44,8 @@ For devices not compatible (iOS or older Android versions) a fallback theme is r
 
 ### Installation in managed Expo projects
 
+> You can use it with Expo Go, but you'll receive a fallback theme because the library requires custom native code and Expo go [doesn't support it](https://docs.expo.dev/workflow/customizing/)
+
 ```
 npx expo install @pchmn/expo-material3-theme
 ```
@@ -68,7 +70,7 @@ import { useColorScheme, View, Button } from 'react-native';
 
 function App() {
   const colorScheme = useColorScheme();
-  // If the device does not support material3, it will return a theme based on the fallback source color (optional, default to #6750A4)
+  // If the device is not compatible, it will return a theme based on the fallback source color (optional, default to #6750A4)
   const { theme } = useMaterial3Theme({ fallbackSourceColor: '#3E8260' });
 
   return (
@@ -103,6 +105,27 @@ function App() {
 ```
 
 > ℹ️ `updateTheme()` and `resetTheme()` will change the theme returned by `useMaterial3Theme()`, it will not change theme at system level
+
+### Overwrite system theme
+
+If you want to use a theme based on a specific color instead of the system theme, just pass the `sourceColor` param to `useMaterial3Theme` hook:
+
+```tsx
+import { useMaterial3Theme } from '@pchmn/expo-material3-theme';
+import { useColorScheme, View, Button } from 'react-native';
+
+function App() {
+  const colorScheme = useColorScheme();
+  // Theme returned will be based on #3E8260 color
+  const { theme } = useMaterial3Theme({ sourceColor: '#3E8260' });
+
+  return (
+    <View style={{ backgroundColor: theme[colorScheme].background }}>
+      <Button color={theme[colorScheme].primary}>Themed button</Button>
+    </View>
+  );
+}
+```
 
 ### Usage with `react-native-paper`
 
