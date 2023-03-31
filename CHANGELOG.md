@@ -9,9 +9,7 @@
 
 ### BREAKING CHANGES
 
-* remove `overwrite` param
-
-`overwrite` param in `useMaterial3Theme` is removed, use `sourceColor` param to overwrite system theme
+* `overwrite` param in `useMaterial3Theme` is removed, use `sourceColor` param to overwrite system theme
 
 # 1.0.0-beta.1 (2023-03-16)
 
