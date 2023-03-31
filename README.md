@@ -60,7 +60,7 @@ npx expo install @pchmn/expo-material3-theme && npx pod-install
 
 ## Usage
 
-### Retrieve theme
+### Retrieve system theme
 
 A basic usage would be to retrieve the Material 3 theme from user device (or a fallback theme if not supported) by using `useMaterial3Theme` hook:
 
@@ -72,6 +72,27 @@ function App() {
   const colorScheme = useColorScheme();
   // If the device is not compatible, it will return a theme based on the fallback source color (optional, default to #6750A4)
   const { theme } = useMaterial3Theme({ fallbackSourceColor: '#3E8260' });
+
+  return (
+    <View style={{ backgroundColor: theme[colorScheme].background }}>
+      <Button color={theme[colorScheme].primary}>Themed button</Button>
+    </View>
+  );
+}
+```
+
+### Use a custom theme
+
+If you want to use a theme based on a specific color instead of the system theme, just pass the `sourceColor` param to `useMaterial3Theme` hook:
+
+```tsx
+import { useMaterial3Theme } from '@pchmn/expo-material3-theme';
+import { useColorScheme, View, Button } from 'react-native';
+
+function App() {
+  const colorScheme = useColorScheme();
+  // Theme returned will be based on #3E8260 color
+  const { theme } = useMaterial3Theme({ sourceColor: '#3E8260' });
 
   return (
     <View style={{ backgroundColor: theme[colorScheme].background }}>
@@ -105,27 +126,6 @@ function App() {
 ```
 
 > ℹ️ `updateTheme()` and `resetTheme()` will change the theme returned by `useMaterial3Theme()`, it will not change theme at system level
-
-### Overwrite system theme
-
-If you want to use a theme based on a specific color instead of the system theme, just pass the `sourceColor` param to `useMaterial3Theme` hook:
-
-```tsx
-import { useMaterial3Theme } from '@pchmn/expo-material3-theme';
-import { useColorScheme, View, Button } from 'react-native';
-
-function App() {
-  const colorScheme = useColorScheme();
-  // Theme returned will be based on #3E8260 color
-  const { theme } = useMaterial3Theme({ sourceColor: '#3E8260' });
-
-  return (
-    <View style={{ backgroundColor: theme[colorScheme].background }}>
-      <Button color={theme[colorScheme].primary}>Themed button</Button>
-    </View>
-  );
-}
-```
 
 ### Usage with `react-native-paper`
 
@@ -175,7 +175,7 @@ This is a file for iOS simulator. Extract [zip file](docs/example-apps.zip), and
 
 ## ⚠️ Activity recreation
 
-When material3 dynamic theme is changed on Android 12+ devices, it is a configuration change and the system will recreate an Activity.
+When Material 3 dynamic theme is changed on Android 12+ devices, it is a configuration change and the system will recreate an Activity.
 
 This configuration change can't be disable: "Some configuration changes always cause the activity to restart. You can't disable them. For example, you can't disable the dynamic colors change introduced in API 32" (cf official [doc](https://developer.android.com/guide/topics/resources/runtime-changes#restrict-activity)).
 
