@@ -1,7 +1,7 @@
 {
   "name": "@pchmn/expo-material3-theme",
   "version": "1.0.0",
-  "description": "Expo module to retrieve material 3 theme from Android 12+ devices",
+  "description": "Manage Material 3 theme in your React Native App",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "scripts": {
