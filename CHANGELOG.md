@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/pchmn/expo-material3-theme/compare/v1.0.0...v1.0.1) (2023-04-03)
+
+
+### Bug Fixes
+
+* exclude unnecessary files from package ([a5d08df](https://github.com/pchmn/expo-material3-theme/commit/a5d08dfc7a9c356afe276ea5271adc6a3363ec93))
+
 # 1.0.0 (2023-03-31)
 
 
