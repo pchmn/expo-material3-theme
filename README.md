@@ -44,7 +44,8 @@ For devices not compatible (iOS or older Android versions) a fallback theme is r
 
 ### Installation in managed Expo projects
 
-> You can use it with Expo Go, but you'll receive a fallback theme because the library requires custom native code and Expo go [doesn't support it](https://docs.expo.dev/workflow/customizing/)
+> This library works with Expo Go, but you won't be able to retrieve the system theme (you'll get a fallback theme) because it requires custom native code and Expo Go [doesn't support it](https://docs.expo.dev/workflow/customizing/)
+
 
 ```
 npx expo install @pchmn/expo-material3-theme
@@ -55,7 +56,8 @@ npx expo install @pchmn/expo-material3-theme
 For bare React Native projects, you must ensure that you have [installed and configured the `expo` package](https://docs.expo.dev/bare/installing-expo-modules/) before continuing.
 
 ```sh
-npx expo install @pchmn/expo-material3-theme && npx pod-install
+npx expo install @pchmn/expo-material3-theme
+npx pod-install
 ```
 
 ## Usage
@@ -157,7 +159,7 @@ function App() {
 
 ## Example
 
-You can see an example app in the [`example`](./example/) folder.
+You can see an example app in the [`/example`](./example/) folder.
 
 ### Android example
 
