@@ -1,4 +1,4 @@
-package expo.modules.material3theme.example;
+package com.expomaterial3themeexample;
 
 import android.os.Build;
 import android.os.Bundle;

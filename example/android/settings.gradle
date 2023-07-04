@@ -1,4 +1,4 @@
-rootProject.name = 'expo-material3-theme-example'
+rootProject.name = 'expomaterial3themeexample'
 
 apply from: new File(["node", "--print", "require.resolve('expo/package.json')"].execute(null, rootDir).text.trim(), "../scripts/autolinking.gradle");
 useExpoModules()
