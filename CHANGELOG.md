@@ -1,3 +1,5 @@
+# [1.1.0](https://github.com/pchmn/expo-material3-theme/compare/v1.0.1...v1.1.0) (2023-07-07)
+
 ## [1.0.1](https://github.com/pchmn/expo-material3-theme/compare/v1.0.0...v1.0.1) (2023-04-03)
 
 
