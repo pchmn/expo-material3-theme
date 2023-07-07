@@ -11,7 +11,7 @@
       "@semantic-release/commit-analyzer",
       {
         "releaseRules": [
-          { "type": "build", "release": "minor" }
+          { "type": "build", "release": "patch" }
         ]
       }
     ],
