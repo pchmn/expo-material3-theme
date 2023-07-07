@@ -1,7 +1,7 @@
 # [1.1.0](https://github.com/pchmn/expo-material3-theme/compare/v1.0.1...v1.1.0) (2023-07-07)
 
 * fix gradle 8 compatibility ([9f04784](https://github.com/pchmn/expo-material3-theme/commit/9f04784fadfdde8c80fd3c889e72f55267fee156))
-* build: use @material/material-color-utilities ([d2f6085](https://github.com/pchmn/expo-material3-theme/commit/d2f6085e4ed3cf207ef534d71ab4c38ec8311329))
+* use @material/material-color-utilities ([d2f6085](https://github.com/pchmn/expo-material3-theme/commit/d2f6085e4ed3cf207ef534d71ab4c38ec8311329))
 
 ## [1.0.1](https://github.com/pchmn/expo-material3-theme/compare/v1.0.0...v1.0.1) (2023-04-03)
 
