@@ -51,6 +51,15 @@ export type Material3Scheme = SystemScheme & {
   onSurfaceDisabled: string;
   backdrop: string;
 
+  surfaceContainer: string;
+  surfaceContainerLow: string;
+  surfaceContainerLowest: string;
+  surfaceContainerHight: string;
+  surfaceContainerHighest: string;
+  surfaceBright: string;
+  surfaceDim: string;
+  surfaceTint: string;
+
   elevation: {
     [key in keyof typeof ElevationLevels]: string;
   };
