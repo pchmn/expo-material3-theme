@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/pchmn/expo-material3-theme/compare/v1.1.0...v1.2.0) (2023-07-09)
+
+
+### Features
+
+* add new color tokens ([efcabe0](https://github.com/pchmn/expo-material3-theme/commit/efcabe05da8db8ffc690559a7f02d7360f834715))
+
 # [1.1.0](https://github.com/pchmn/expo-material3-theme/compare/v1.0.1...v1.1.0) (2023-07-07)
 
 * fix gradle 8 compatibility ([9f04784](https://github.com/pchmn/expo-material3-theme/commit/9f04784fadfdde8c80fd3c889e72f55267fee156))
