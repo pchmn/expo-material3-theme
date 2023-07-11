@@ -97,3 +97,9 @@ const theme = createMaterial3Theme('#6750A4');
 #### Returns
 
 - [`Material3Theme`](../src/ExpoMaterial3Theme.types.ts#L59-L62): theme generated from the `sourceColor`
+
+<br>
+
+## `isDynamicThemeSupported: boolean`
+
+Constant that returns if device supports [Material 3 dynamic theme](https://developer.android.com/develop/ui/views/theming/dynamic-colors) from Android 12+ devices.
