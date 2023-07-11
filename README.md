@@ -163,7 +163,7 @@ function App() {
 <details>
   <summary>Override <code>react-native-paper</code> theme (Typescript)</summary>
   <br>
-  
+
   Some [colors](https://github.com/pchmn/expo-material3-theme/blob/main/src/ExpoMaterial3Theme.types.ts#L54-L61) present in `Material3Theme` from this library are not present in `MD3Theme` of `react-native-paper`. You can create a typed `useAppTheme()` hook and use it instead of `useTheme()` hook to fix this :
 
   ```ts
@@ -277,6 +277,7 @@ This is a file for iOS simulator. Extract [zip file](docs/example-apps.zip), and
 - [`useMaterial3Theme`](docs/API.md#usematerial3theme)
 - [`getMaterial3Theme`](docs/API.md#getmaterial3theme)
 - [`createMaterial3Theme`](docs/API.md#creatematerial3theme)
+- [`isDynamicThemeSupported`](docs/API.md#isdynamicthemesupported-boolean)
 
 ## ⚠️ Activity recreation
 
