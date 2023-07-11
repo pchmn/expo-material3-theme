@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/pchmn/expo-material3-theme/compare/v1.2.0...v1.3.0) (2023-07-11)
+
+
+### Features
+
+* export `isDynamicThemeSupported` and `Material3Scheme` ([a91a105](https://github.com/pchmn/expo-material3-theme/commit/a91a1050582f84a34d61575dc4ffb9706609e61a))
+
 # [1.2.0](https://github.com/pchmn/expo-material3-theme/compare/v1.1.0...v1.2.0) (2023-07-09)
 
 
