@@ -59,7 +59,7 @@ function generateMissingFields(scheme: SystemScheme, palettes: Palettes, colorSc
     surfaceContainer: color(palettes.neutral.tone(colorScheme === 'dark' ? 12 : 94)).hex(),
     surfaceContainerLow: color(palettes.neutral.tone(colorScheme === 'dark' ? 10 : 96)).hex(),
     surfaceContainerLowest: color(palettes.neutral.tone(colorScheme === 'dark' ? 4 : 100)).hex(),
-    surfaceContainerHight: color(palettes.neutral.tone(colorScheme === 'dark' ? 17 : 92)).hex(),
+    surfaceContainerHigh: color(palettes.neutral.tone(colorScheme === 'dark' ? 17 : 92)).hex(),
     surfaceContainerHighest: color(palettes.neutral.tone(colorScheme === 'dark' ? 22 : 90)).hex(),
     surfaceBright: color(palettes.neutral.tone(colorScheme === 'dark' ? 24 : 98)).hex(),
     surfaceDim: color(palettes.neutral.tone(colorScheme === 'dark' ? 6 : 87)).hex(),

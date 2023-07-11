@@ -54,7 +54,7 @@ export type Material3Scheme = SystemScheme & {
   surfaceContainer: string;
   surfaceContainerLow: string;
   surfaceContainerLowest: string;
-  surfaceContainerHight: string;
+  surfaceContainerHigh: string;
   surfaceContainerHighest: string;
   surfaceBright: string;
   surfaceDim: string;
