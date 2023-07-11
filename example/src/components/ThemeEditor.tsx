@@ -3,8 +3,8 @@ import { useColorScheme } from 'react-native';
 import { useMMKVBoolean, useMMKVString } from 'react-native-mmkv';
 import { IconButton, Switch, Text, TouchableRipple } from 'react-native-paper';
 
-import { Flex } from './Flex';
 import { useMaterial3ThemeContext } from '../providers/Material3ThemeProvider';
+import { Flex } from './Flex';
 
 const colors = [
   {

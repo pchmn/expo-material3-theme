@@ -90,4 +90,4 @@ export function createMaterial3Theme(sourceColor: string): Material3Theme {
   return createThemeFromSourceColor(sourceColor);
 }
 
-export { Material3Theme, Material3Scheme };
+export { Material3Scheme, Material3Theme };

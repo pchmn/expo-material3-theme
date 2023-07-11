@@ -1,6 +1,6 @@
 import { Material3Scheme, Material3Theme, useMaterial3Theme } from 'expo-material3-theme';
 import { createContext, useContext } from 'react';
-import { useColorScheme, StatusBar } from 'react-native';
+import { StatusBar, useColorScheme } from 'react-native';
 import {
   MD3DarkTheme,
   MD3LightTheme,
