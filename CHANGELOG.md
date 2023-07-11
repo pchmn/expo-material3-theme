@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/pchmn/expo-material3-theme/compare/v1.3.0...v1.3.1) (2023-07-11)
+
+
+### Bug Fixes
+
+* typo (`surfaceContainerHight` -> `surfaceContainerHigh`) ([1a64d09](https://github.com/pchmn/expo-material3-theme/commit/1a64d094bc7d08cf0864a42ffa8ea9a96b977086))
+
 # [1.3.0](https://github.com/pchmn/expo-material3-theme/compare/v1.2.0...v1.3.0) (2023-07-11)
 
 
