@@ -199,7 +199,7 @@ function App() {
     resetTheme: () => void;
   };
 
-  const Material3ThemeProviderContext = createContext<Material3ThemeProviderProps>({} as ThemeProviderProps);
+  const Material3ThemeProviderContext = createContext<Material3ThemeProviderProps>({} as Material3ThemeProviderProps);
 
   export function Material3ThemeProvider({
     children,
@@ -226,9 +226,15 @@ function App() {
     );
   }
 
-  export function useMaterial3ThemeContext = useContext(Material3ThemeProviderContext);
+  export function useMaterial3ThemeContext() {
+    const ctx = useContext(Material3ThemeProviderContext);
+    if (!ctx) {
+      throw new Error('useMaterial3ThemeContext must be used inside Material3ThemeProvider');
+    }
+    return ctx;
+  }
 
-  export function useAppTheme = useTheme<MD3Theme & { colors: Material3Scheme }>;
+  export const useAppTheme = useTheme<MD3Theme & { colors: Material3Scheme }>;
 
 
   // App.tsx
