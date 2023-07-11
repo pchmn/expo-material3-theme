@@ -131,6 +131,7 @@ function App() {
 
 ### Usage with `react-native-paper`
 
+#### Basic example
 `@pchmn/expo-material3-theme` provides a theme compatible with `react-native-paper`, so you can combine both libraries easily:
 
 ```tsx
@@ -156,6 +157,108 @@ function App() {
   );
 }
 ```
+
+#### Advanced usage
+
+<details>
+  <summary>Override <code>react-native-paper</code> theme (Typescript)</summary>
+  <br>
+  
+  Some [colors](https://github.com/pchmn/expo-material3-theme/blob/main/src/ExpoMaterial3Theme.types.ts#L54-L61) present in `Material3Theme` from this library are not present in `MD3Theme` of `react-native-paper`. You can create a typed `useAppTheme()` hook and use it instead of `useTheme()` hook to fix this :
+
+  ```ts
+  import { Material3Scheme } from '@pchmn/expo-material3-theme';
+  import { MD3Theme, useTheme } from 'react-native-paper';
+
+  export const useAppTheme = useTheme<MD3Theme & { colors: Material3Scheme }>;
+
+  // Now use useAppTheme() instead of useTheme()
+  ```
+</details>
+
+<details>
+  <summary>Create a <code>Material3ThemeProvider</code> that includes <code>PaperProvider</code></summary>
+
+  ```tsx
+  // Material3ThemeProvider.tsx
+  import { Material3Scheme, Material3Theme, useMaterial3Theme } from '@pchmn/expo-material3-theme';
+  import { createContext, useContext } from 'react';
+  import { useColorScheme } from 'react-native';
+  import {
+    MD3DarkTheme,
+    MD3LightTheme,
+    MD3Theme,
+    Provider as PaperProvider,
+    ProviderProps,
+    useTheme,
+  } from 'react-native-paper';
+
+  type Material3ThemeProviderProps = {
+    theme: Material3Theme;
+    updateTheme: (sourceColor: string) => void;
+    resetTheme: () => void;
+  };
+
+  const Material3ThemeProviderContext = createContext<Material3ThemeProviderProps>({} as ThemeProviderProps);
+
+  export function Material3ThemeProvider({
+    children,
+    sourceColor,
+    fallbackSourceColor,
+    ...otherProps
+  }: ProviderProps & { sourceColor?: string; fallbackSourceColor?: string }) {
+    const colorScheme = useColorScheme();
+
+    const { theme, updateTheme, resetTheme } = useMaterial3Theme({
+      sourceColor,
+      fallbackSourceColor,
+    });
+
+    const paperTheme =
+      colorScheme === 'dark' ? { ...MD3DarkTheme, colors: theme.dark } : { ...MD3LightTheme, colors: theme.light };
+
+    return (
+      <Material3ThemeProviderContext.Provider value={{ theme, updateTheme, resetTheme }}>
+        <PaperProvider theme={paperTheme} {...otherProps}>
+          {children}
+        </PaperProvider>
+      </Material3ThemeProviderContext.Provider>
+    );
+  }
+
+  export function useMaterial3ThemeContext = useContext(Material3ThemeProviderContext);
+
+  export function useAppTheme = useTheme<MD3Theme & { colors: Material3Scheme }>;
+
+
+  // App.tsx
+  import { Material3ThemeProvider, useAppTheme, useMaterial3ThemeContext } from '../Material3ThemeProvider';
+  import { View, Button } from 'react-native';
+
+  function App() {
+    return (
+      <Material3ThemeProvider>
+        <AppContent />
+      </Material3ThemeProvider>
+    )
+  }
+
+  function AppContent() {
+    const { updateTheme, resetTheme } = useMaterial3ThemeContext();
+    // react-native-paper theme is always in sync
+    const theme = useAppTheme();
+
+    return (
+      <View style={{ backgroundColor: theme.colors.background }}>
+        {/* Update theme by generating a new one based on #3E8260 color */}
+        <Button onPress={() => updateTheme('#3E8260')}>Update theme</Button>
+        {/* Reset theme to default (system or fallback) */}
+        <Button onPress={() => resetTheme()}>Reset theme</Button>
+      </View>
+    );
+  }
+  ```
+</details>
 
 ## Example
 
