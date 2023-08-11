@@ -51,6 +51,13 @@ For devices not compatible (iOS or older Android versions) a fallback theme is r
 npx expo install @pchmn/expo-material3-theme
 ```
 
+If you use development build, you'll have to rebuild development client (only android) after adding the library because it contains native code (https://docs.expo.dev/develop/development-builds/use-development-builds/#rebuild-a-development-build) :
+
+```
+npx expo prebuild --platform android
+npx expo run:android
+```
+
 ### Installation in bare React Native projects
 
 For bare React Native projects, you must ensure that you have [installed and configured the `expo` package](https://docs.expo.dev/bare/installing-expo-modules/) before continuing.
