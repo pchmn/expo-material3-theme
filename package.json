@@ -1,6 +1,6 @@
 {
   "name": "@pchmn/expo-material3-theme",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "description": "Manage Material 3 theme in your React Native App",
   "main": "build/index.js",
   "types": "build/index.d.ts",

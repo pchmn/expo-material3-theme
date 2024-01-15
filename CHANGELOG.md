@@ -1,3 +1,10 @@
+## [1.3.2](https://github.com/pchmn/expo-material3-theme/compare/v1.3.1...v1.3.2) (2024-01-15)
+
+
+### Bug Fixes
+
+* support android gradle plugin version >= 8 ([d7cbf1e](https://github.com/pchmn/expo-material3-theme/commit/d7cbf1e51278ee77fb325dd45c02f706753fb120))
+
 ## [1.3.1](https://github.com/pchmn/expo-material3-theme/compare/v1.3.0...v1.3.1) (2023-07-11)
 
 
