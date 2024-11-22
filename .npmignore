@@ -12,6 +12,11 @@ __tests__
 /docs/
 /src/
 /.eslintrc.js
+/.lintstagedrc.js
 /.prettierrc.js
+/.nvmrc
+/.releaserc
+/CHANGELOG.md
+/commitlint.config.js
 /pnpm-lock.yaml
 /tsconfig.json

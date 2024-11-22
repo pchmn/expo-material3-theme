@@ -1,4 +1,3 @@
-import { useMaterial3Theme } from 'expo-material3-theme';
 import { useState } from 'react';
 import { useMMKVString } from 'react-native-mmkv';
 import { Dialog, FAB, Portal } from 'react-native-paper';
@@ -6,19 +5,16 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Flex } from './components/Flex';
 import { ThemeEditor } from './components/ThemeEditor';
-import { ThemeProvider } from './providers/ThemeProvider';
+import { Material3ThemeProvider } from './providers/Material3ThemeProvider';
 import { ComponentsExampleView } from './views/ComponentsExampleView';
 
 export default function App() {
   const [sourceColor] = useMMKVString('sourceColor');
-  const { theme, updateTheme, resetTheme } = useMaterial3Theme({
-    sourceColor,
-  });
 
   return (
-    <ThemeProvider theme={theme} resetTheme={resetTheme} updateTheme={updateTheme}>
+    <Material3ThemeProvider sourceColor={sourceColor}>
       <AppContent />
-    </ThemeProvider>
+    </Material3ThemeProvider>
   );
 }
 

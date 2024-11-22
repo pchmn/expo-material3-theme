@@ -1,9 +1,10 @@
+import { isDynamicThemeSupported } from 'expo-material3-theme';
 import { useColorScheme } from 'react-native';
 import { useMMKVBoolean, useMMKVString } from 'react-native-mmkv';
 import { IconButton, Switch, Text, TouchableRipple } from 'react-native-paper';
 
+import { useMaterial3ThemeContext } from '../providers/Material3ThemeProvider';
 import { Flex } from './Flex';
-import { useThemeProviderContext } from '../providers/ThemeProvider';
 
 const colors = [
   {
@@ -26,7 +27,7 @@ const colors = [
 
 export function ThemeEditor() {
   const colorScheme = useColorScheme();
-  const { updateTheme, resetTheme } = useThemeProviderContext();
+  const { updateTheme, resetTheme } = useMaterial3ThemeContext();
 
   const [useDefaultTheme, setUseDefaultTheme] = useMMKVBoolean('useDefaultTheme');
   const [sourceColor, setSourceColor] = useMMKVString('sourceColor');
@@ -46,10 +47,12 @@ export function ThemeEditor() {
 
   return (
     <Flex gap={20} style={{ paddingTop: 20 }}>
-      <Flex direction="row" justify="space-between">
-        <Text>Use default theme</Text>
-        <Switch value={useDefaultTheme !== false} onValueChange={handleUseDefaultThemeChange} />
-      </Flex>
+      {isDynamicThemeSupported && (
+        <Flex direction="row" justify="space-between">
+          <Text>Use default theme</Text>
+          <Switch value={useDefaultTheme !== false} onValueChange={handleUseDefaultThemeChange} />
+        </Flex>
+      )}
 
       <Flex gap={20}>
         <Text>Select source color</Text>

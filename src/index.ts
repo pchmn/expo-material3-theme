@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { Platform } from 'react-native';
 
-import { Material3Theme, SystemScheme } from './ExpoMaterial3Theme.types';
+import { Material3Scheme, Material3Theme, SystemScheme } from './ExpoMaterial3Theme.types';
 import ExpoMaterial3ThemeModule from './ExpoMaterial3ThemeModule';
 import { createThemeFromSourceColor, createThemeFromSystemSchemes } from './utils/createMaterial3Theme';
 
-const isSupported = !!ExpoMaterial3ThemeModule && Platform.OS === 'android' && Platform.Version >= 31;
+export const isDynamicThemeSupported =
+  !!ExpoMaterial3ThemeModule && Platform.OS === 'android' && Platform.Version >= 31;
 
 /**
  * Hook to manage material3 theme.
@@ -48,7 +49,7 @@ export function useMaterial3Theme(params?: { fallbackSourceColor?: string; sourc
  * @returns
  */
 export function getMaterial3Theme(fallbackSourceColor: string = '#6750A4'): Material3Theme {
-  if (!isSupported) {
+  if (!isDynamicThemeSupported) {
     return createThemeFromSourceColor(fallbackSourceColor);
   }
 
@@ -64,7 +65,7 @@ export function getMaterial3Theme(fallbackSourceColor: string = '#6750A4'): Mate
 }
 
 export async function getMaterial3ThemeAsync(fallbackSourceColor: string = '#6750A4'): Promise<Material3Theme> {
-  if (!isSupported) {
+  if (!isDynamicThemeSupported) {
     return createThemeFromSourceColor(fallbackSourceColor);
   }
 
@@ -89,4 +90,4 @@ export function createMaterial3Theme(sourceColor: string): Material3Theme {
   return createThemeFromSourceColor(sourceColor);
 }
 
-export { Material3Theme };
+export { Material3Scheme, Material3Theme };
