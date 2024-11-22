@@ -3,10 +3,28 @@ import { Platform } from 'react-native';
 
 import { Material3Scheme, Material3Theme, SystemScheme } from './ExpoMaterial3Theme.types';
 import ExpoMaterial3ThemeModule from './ExpoMaterial3ThemeModule';
-import { createThemeFromSourceColor, createThemeFromSystemSchemes } from './utils/createMaterial3Theme';
+import {
+  createThemeFromSourceColor,
+  createThemeFromSystemSchemes,
+  Material3ThemeOptions,
+} from './utils/createMaterial3Theme';
 
 export const isDynamicThemeSupported =
   !!ExpoMaterial3ThemeModule && Platform.OS === 'android' && Platform.Version >= 31;
+
+interface UseMaterial3ThemeOptions extends Material3ThemeOptions {
+  /**
+   * Source color for the theme.
+   *
+   * If provided, it will overwrite the system theme.
+   * */
+  sourceColor?: string;
+  /**
+   * Source color for the fallback theme.
+   * @default '#6750A4'
+   */
+  fallbackSourceColor?: string;
+}
 
 /**
  * Hook to manage material3 theme.
@@ -17,24 +35,21 @@ export const isDynamicThemeSupported =
  *   - a theme based on sourceColor if provided
  * - a function to update the theme based on a source color
  * - a function to reset the theme to default
- *
- * @param params.fallbackSourceColor - optional - source color for the fallback theme (default to #6750A4)
- * @param params.sourceColor - optional - source color for the theme (overwrite system theme)
  * @returns
  */
-export function useMaterial3Theme(params?: { fallbackSourceColor?: string; sourceColor?: string }) {
-  const { fallbackSourceColor = '#6750A4', sourceColor } = params || {};
+export function useMaterial3Theme(options?: UseMaterial3ThemeOptions) {
+  const { fallbackSourceColor = '#6750A4', sourceColor, ...themeOptions } = options || {};
 
   const [theme, setTheme] = useState<Material3Theme>(
-    sourceColor ? createMaterial3Theme(sourceColor) : getMaterial3Theme(fallbackSourceColor)
+    sourceColor ? createMaterial3Theme(sourceColor, themeOptions) : getMaterial3Theme(fallbackSourceColor, options)
   );
 
-  const updateTheme = (sourceColor: string) => {
-    setTheme(createThemeFromSourceColor(sourceColor));
+  const updateTheme = (sourceColor: string, options?: Material3ThemeOptions) => {
+    setTheme(createThemeFromSourceColor(sourceColor, options));
   };
 
   const resetTheme = () => {
-    setTheme(getMaterial3Theme(fallbackSourceColor));
+    setTheme(getMaterial3Theme(fallbackSourceColor, options));
   };
 
   return { theme, updateTheme, resetTheme };
@@ -48,9 +63,12 @@ export function useMaterial3Theme(params?: { fallbackSourceColor?: string; sourc
  * @param fallbackSourceColor source color for the fallback theme (default to #6750A4)
  * @returns
  */
-export function getMaterial3Theme(fallbackSourceColor: string = '#6750A4'): Material3Theme {
+export function getMaterial3Theme(
+  fallbackSourceColor: string = '#6750A4',
+  options?: Material3ThemeOptions
+): Material3Theme {
   if (!isDynamicThemeSupported) {
-    return createThemeFromSourceColor(fallbackSourceColor);
+    return createThemeFromSourceColor(fallbackSourceColor, options);
   }
 
   const systemSchemes = ExpoMaterial3ThemeModule.getSystemTheme() as {
@@ -61,12 +79,15 @@ export function getMaterial3Theme(fallbackSourceColor: string = '#6750A4'): Mate
   if (systemSchemes) {
     return createThemeFromSystemSchemes(systemSchemes);
   }
-  return createThemeFromSourceColor(fallbackSourceColor);
+  return createThemeFromSourceColor(fallbackSourceColor, options);
 }
 
-export async function getMaterial3ThemeAsync(fallbackSourceColor: string = '#6750A4'): Promise<Material3Theme> {
+export async function getMaterial3ThemeAsync(
+  fallbackSourceColor: string = '#6750A4',
+  options?: Material3ThemeOptions
+): Promise<Material3Theme> {
   if (!isDynamicThemeSupported) {
-    return createThemeFromSourceColor(fallbackSourceColor);
+    return createThemeFromSourceColor(fallbackSourceColor, options);
   }
 
   const systemSchemes = (await ExpoMaterial3ThemeModule.getSystemThemeAsync()) as {
@@ -77,7 +98,7 @@ export async function getMaterial3ThemeAsync(fallbackSourceColor: string = '#675
   if (systemSchemes) {
     return createThemeFromSystemSchemes(systemSchemes);
   }
-  return createThemeFromSourceColor(fallbackSourceColor);
+  return createThemeFromSourceColor(fallbackSourceColor, options);
 }
 
 /**
@@ -86,8 +107,8 @@ export async function getMaterial3ThemeAsync(fallbackSourceColor: string = '#675
  * @param sourceColor source color for the theme
  * @returns
  */
-export function createMaterial3Theme(sourceColor: string): Material3Theme {
-  return createThemeFromSourceColor(sourceColor);
+export function createMaterial3Theme(sourceColor: string, options?: Material3ThemeOptions): Material3Theme {
+  return createThemeFromSourceColor(sourceColor, options);
 }
 
-export { Material3Scheme, Material3Theme };
+export { Material3Scheme, Material3Theme, Material3ThemeOptions };
