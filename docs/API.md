@@ -1,7 +1,6 @@
 # API Reference
 
-## <code>useMaterial3Theme(params?: Params): Object</code>
-
+## <code>useMaterial3Theme(options?: UseMaterial3ThemeOptions): Object</code>
 
 Hook that lets you manage Material 3 theme in your app. It will return the theme retrieved from user device (or a fallback theme if device is not supported) or a theme based on a source color, a function to update the theme and a function to reset the theme.
 
@@ -24,14 +23,16 @@ const { theme, updateTheme, resetTheme } = useMaterial3Theme({ sourceColor: '#3E
 {
   fallbackSourceColor?: string;
   sourceColor?: string;
+  colorFidelity?: boolean;
 }
 ```
 
 </details>
 
-- `params`:
+- `options: UseMaterial3ThemeOptions`:
   - `fallbackSourceColor` (optional, default to `#6750A4`): Source color for the fallback theme
   - `sourceColor` (optional): Source color for the theme (overwrite system theme)
+  - `colorFidelity` (optional): Apply color fidelity to make scheme colors better match `sourceColor` (or `fallbackSourceColor`)
 
 #### Returns
 
@@ -48,9 +49,8 @@ const { theme, updateTheme, resetTheme } = useMaterial3Theme({ sourceColor: '#3E
 
 </details>
 
-
 - `Object`:
-  - `theme`: 
+  - `theme`:
     - theme retrieved from user device (or fallback theme) if `sourceColor` not provided
     - theme based on `sourceColor` if provided
   - `updateTheme(sourceColor)`: Function to update theme by generating a new one based on a source color
@@ -60,7 +60,7 @@ const { theme, updateTheme, resetTheme } = useMaterial3Theme({ sourceColor: '#3E
 
 <br>
 
-## <code>getMaterial3Theme(fallbackSourceColor?: string): <a href="../src/ExpoMaterial3Theme.types.ts#L59-L62">Material3Theme</a></code>
+## <code>getMaterial3Theme(fallbackSourceColor?: string, options?: Material3ThemeOptions): <a href="../src/ExpoMaterial3Theme.types.ts#L59-L62">Material3Theme</a></code>
 
 Function that will return the theme retrieved from user device (or a fallback theme if device is not supported).
 
@@ -75,6 +75,8 @@ const theme = getMaterial3Theme('#6750A4');
 #### Parameters
 
 - `fallbackSourceColor` (optional, default to `#6750A4`): Source color for the fallback theme
+- `options?: Material3ThemeOptions` (optional)
+  - `colorFidelity` (optional): Apply color fidelity to make scheme colors better match `fallbackSourceColor` if used
 
 #### Returns
 
@@ -82,7 +84,7 @@ const theme = getMaterial3Theme('#6750A4');
 
 <br>
 
-## <code>createMaterial3Theme(sourceColor: string): <a href="../src/ExpoMaterial3Theme.types.ts#L59-L62">Material3Theme</a></code>
+## <code>createMaterial3Theme(sourceColor: string, options?: Material3ThemeOptions): <a href="../src/ExpoMaterial3Theme.types.ts#L59-L62">Material3Theme</a></code>
 
 Function that will create a Material 3 theme based on a source color (using [`@material/material-color-utilities`](https://github.com/material-foundation/material-color-utilities/tree/main/typescript)).
 
@@ -93,6 +95,8 @@ const theme = createMaterial3Theme('#6750A4');
 #### Parameters
 
 - `sourceColor` (required): Source color for the theme
+- `options?: Material3ThemeOptions` (optional)
+  - `colorFidelity` (optional): Apply color fidelity to make scheme colors better match `sourceColor`
 
 #### Returns
 
