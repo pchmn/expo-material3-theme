@@ -1,3 +1,10 @@
+# [1.4.0-beta.1](https://github.com/pchmn/expo-material3-theme/compare/v1.3.2...v1.4.0-beta.1) (2024-11-22)
+
+
+### Features
+
+* add color fidelity option ([5dd4bea](https://github.com/pchmn/expo-material3-theme/commit/5dd4bea5d67ae3579ccc0d7975e2e7cd418a98d5))
+
 ## [1.3.2](https://github.com/pchmn/expo-material3-theme/compare/v1.3.1...v1.3.2) (2024-01-15)
 
 
