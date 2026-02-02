@@ -71,7 +71,7 @@ export function getMaterial3Theme(
     return createThemeFromSourceColor(fallbackSourceColor, options);
   }
 
-  const systemSchemes = ExpoMaterial3ThemeModule.getSystemTheme() as {
+  const systemSchemes = ExpoMaterial3ThemeModule?.getSystemTheme() as {
     light: SystemScheme;
     dark: SystemScheme;
   } | null;
@@ -90,7 +90,7 @@ export async function getMaterial3ThemeAsync(
     return createThemeFromSourceColor(fallbackSourceColor, options);
   }
 
-  const systemSchemes = (await ExpoMaterial3ThemeModule.getSystemThemeAsync()) as {
+  const systemSchemes = (await ExpoMaterial3ThemeModule?.getSystemThemeAsync()) as {
     light: SystemScheme;
     dark: SystemScheme;
   } | null;
