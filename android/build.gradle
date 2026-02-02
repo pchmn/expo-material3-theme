@@ -54,14 +54,26 @@ android {
   compileSdkVersion safeExtGet("compileSdkVersion", 34)
 
   def agpVersion = com.android.Version.ANDROID_GRADLE_PLUGIN_VERSION
+  // Get Java version from parent project or default to 17
+  def javaVersion = safeExtGet("javaVersion", 17)
+  
   if (agpVersion.tokenize('.')[0].toInteger() < 8) {
     compileOptions {
-      sourceCompatibility JavaVersion.VERSION_17
-      targetCompatibility JavaVersion.VERSION_17
+      sourceCompatibility JavaVersion.valueOf("VERSION_${javaVersion}")
+      targetCompatibility JavaVersion.valueOf("VERSION_${javaVersion}")
     }
 
     kotlinOptions {
-      jvmTarget = "17"
+      jvmTarget = "${javaVersion}"
+    }
+  } else {
+    compileOptions {
+      sourceCompatibility JavaVersion.valueOf("VERSION_${javaVersion}")
+      targetCompatibility JavaVersion.valueOf("VERSION_${javaVersion}")
+    }
+
+    kotlinOptions {
+      jvmTarget = "${javaVersion}"
     }
   }
 
