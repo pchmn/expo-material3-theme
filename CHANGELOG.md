@@ -5,6 +5,13 @@
 
 * add color fidelity ([#17](https://github.com/pchmn/expo-material3-theme/issues/17)) ([344b229](https://github.com/pchmn/expo-material3-theme/commit/344b22964c802d492836538340af551327c37455))
 
+# [1.4.0-beta.2](https://github.com/pchmn/expo-material3-theme/compare/v1.4.0-beta.1...v1.4.0-beta.2) (2026-02-02)
+
+
+### Features
+
+* add color fidelity ([#17](https://github.com/pchmn/expo-material3-theme/issues/17)) ([344b229](https://github.com/pchmn/expo-material3-theme/commit/344b22964c802d492836538340af551327c37455))
+
 # [1.4.0-beta.1](https://github.com/pchmn/expo-material3-theme/compare/v1.3.2...v1.4.0-beta.1) (2024-11-22)
 
 
