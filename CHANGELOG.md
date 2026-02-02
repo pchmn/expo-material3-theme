@@ -1,3 +1,16 @@
+# [1.4.0](https://github.com/pchmn/expo-material3-theme/compare/v1.3.2...v1.4.0) (2026-02-02)
+
+
+### Bug Fixes
+
+* resolve jvm target compatibility issues with java 17+ ([#19](https://github.com/pchmn/expo-material3-theme/issues/19)) ([7a38e70](https://github.com/pchmn/expo-material3-theme/commit/7a38e709f03c580cb315befe0a4a97bd2fdfbfb3))
+
+
+### Features
+
+* add color fidelity ([#17](https://github.com/pchmn/expo-material3-theme/issues/17)) ([344b229](https://github.com/pchmn/expo-material3-theme/commit/344b22964c802d492836538340af551327c37455))
+* add color fidelity option ([5dd4bea](https://github.com/pchmn/expo-material3-theme/commit/5dd4bea5d67ae3579ccc0d7975e2e7cd418a98d5))
+
 # [1.4.0-beta.1](https://github.com/pchmn/expo-material3-theme/compare/v1.3.2...v1.4.0-beta.1) (2024-11-22)
 
 
