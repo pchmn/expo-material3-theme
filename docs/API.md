@@ -92,6 +92,32 @@ const theme = getMaterial3Theme('#6750A4', { colorFidelity: true });
 
 - [`Material3Theme`](../src/ExpoMaterial3Theme.types.ts#L59-L62): theme retrieved from user device (or fallback theme)
 
+## <code>getMaterial3ThemeAsync(fallbackSourceColor?: string, options?: Material3ThemeOptions): Promise<<a href="../src/ExpoMaterial3Theme.types.ts#L59-L62">Material3Theme</a>></code>
+
+Function that will return the theme retrieved from user device (or a fallback theme if device is not supported) asynchronously.
+
+It is an `AsyncFunction` "whose native code is by default dispatched on a different thread than the JavaScript runtime runs on" (https://docs.expo.dev/modules/module-api/#asyncfunction).
+
+```ts
+// Without params
+const theme = await getMaterial3ThemeAsync();
+
+// With params
+const theme = await getMaterial3ThemeAsync('#6750A4');
+// or
+const theme = await getMaterial3ThemeAsync('#6750A4', { colorFidelity: true });
+```
+
+#### Parameters
+
+- `fallbackSourceColor` (optional, default to `#6750A4`): Source color for the fallback theme
+- `options?: Material3ThemeOptions` (optional)
+  - `colorFidelity` (optional): Apply color fidelity to make scheme colors better match `fallbackSourceColor` if used
+
+#### Returns
+
+- [`Material3Theme`](../src/ExpoMaterial3Theme.types.ts#L59-L62): theme retrieved from user device (or fallback theme)
+
 <br>
 
 ## <code>createMaterial3Theme(sourceColor: string, options?: Material3ThemeOptions): <a href="../src/ExpoMaterial3Theme.types.ts#L59-L62">Material3Theme</a></code>
