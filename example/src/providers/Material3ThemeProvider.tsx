@@ -1,4 +1,4 @@
-import { Material3Scheme, Material3Theme, useMaterial3Theme } from 'expo-material3-theme';
+import { Material3Scheme, Material3Theme, Material3ThemeOptions, useMaterial3Theme } from 'expo-material3-theme';
 import { createContext, useContext } from 'react';
 import { StatusBar, useColorScheme } from 'react-native';
 import {
@@ -14,7 +14,7 @@ import { Flex } from '../components/Flex';
 
 type Material3ThemeProviderProps = {
   theme: Material3Theme;
-  updateTheme: (sourceColor: string) => void;
+  updateTheme: (sourceColor: string, options?: Material3ThemeOptions) => void;
   resetTheme: () => void;
 };
 

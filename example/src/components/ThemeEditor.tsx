@@ -31,6 +31,8 @@ export function ThemeEditor() {
 
   const [useDefaultTheme, setUseDefaultTheme] = useMMKVBoolean('useDefaultTheme');
   const [sourceColor, setSourceColor] = useMMKVString('sourceColor');
+  const [useColorFidelity, setUseColorFidelity] = useMMKVBoolean('colorFidelity');
+  console.log('useColorFidelity', useColorFidelity);
 
   const handleUseDefaultThemeChange = (value: boolean) => {
     if (value) {
@@ -40,9 +42,16 @@ export function ThemeEditor() {
     setUseDefaultTheme(value);
   };
 
+  const handleUseColorFidelityChange = (value: boolean) => {
+    setUseColorFidelity(value);
+    if (sourceColor) {
+      updateTheme(sourceColor, { colorFidelity: value });
+    }
+  };
+
   const handleSourceColorChange = (color: string) => {
     setSourceColor(color);
-    updateTheme(color);
+    updateTheme(color, { colorFidelity: useColorFidelity });
   };
 
   return (
@@ -53,6 +62,11 @@ export function ThemeEditor() {
           <Switch value={useDefaultTheme !== false} onValueChange={handleUseDefaultThemeChange} />
         </Flex>
       )}
+
+      <Flex direction="row" justify="space-between">
+        <Text>Use color fidelity</Text>
+        <Switch value={useColorFidelity !== false} onValueChange={handleUseColorFidelityChange} />
+      </Flex>
 
       <Flex gap={20}>
         <Text>Select source color</Text>

@@ -8,7 +8,7 @@ inputs:
 
   pnpm-version:
     description: Version of pnpm to use
-    default: 7.x
+    default: 9.x
 
   install:
     description: Run pnpm install

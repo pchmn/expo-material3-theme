@@ -56,7 +56,7 @@
     "react-native": "*"
   },
   "dependencies": {
-    "@material/material-color-utilities": "^0.2.7",
+    "@material/material-color-utilities": "^0.3.0",
     "color": "^4.2.3"
   }
 }
