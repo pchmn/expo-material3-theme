@@ -38,13 +38,13 @@
     "@semantic-release/git": "^10.0.1",
     "@types/color": "^3.0.3",
     "@types/jest": "^29.4.0",
-    "@types/react": "^18.0.25",
-    "@types/react-native": "^0.70.6",
+    "@types/react": "~18.3.12",
+    "@types/react-native": "^0.73.0",
     "eslint": "^8.37.0",
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "eslint-plugin-unused-imports": "^2.0.0",
-    "expo-module-scripts": "^3.0.4",
-    "expo-modules-core": "^1.1.0",
+    "expo-module-scripts": "^4.0.2",
+    "expo-modules-core": "^1.12.0",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.0",
     "prettier": "^2.8.7",
@@ -58,5 +58,6 @@
   "dependencies": {
     "@material/material-color-utilities": "^0.3.0",
     "color": "^4.2.3"
-  }
+  },
+  "packageManager": "pnpm@9.15.3"
 }
